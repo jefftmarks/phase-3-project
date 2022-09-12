@@ -1,0 +1,54 @@
+{
+	"users": [
+		{
+			"id": 1,
+			"first_name": "Jeff",
+			"last_name": "Marks",
+			"username": "jeffs_world",
+			"password": "11111",
+			"profile_image": "https://www.thedailymeal.com/eat/twitter-sauce-mess-viral/062918",
+			"is_active": true,
+			"created_at": "2022-09-08 17:01:25.561693",
+			"updated_at": "2022-09-08 17:01:25.561693",
+			"menus": [
+				{
+					"id": 1,
+					"name": "Thanksgiving Dinner",
+					"image_url": "https://www.thedailymeal.com/eat/twitter-sauce-mess-viral/062918",
+					"description": "A fun dinner you can make with your friends!",
+					"date": "2022-09-08",
+					"user_id": 1,
+					"created_at": "2022-09-08 17:01:25.561693",
+					"updated_at": "2022-09-08 17:01:25.561693",
+					"courses": [
+						{
+							"id": 1,
+							"type": "Main",
+							"menu_id": 1,
+							"dishes": [
+								{
+									"id": 1,
+									"name": "Mashed Potatoes",
+									"instructions": "Mash the potatoes and add butter...",
+									"course_id": 1,
+									"ingredients": [
+										{
+											"id": 1,
+											"description": "3 potatoes",
+											"dish_id": 1
+										},
+										{
+											"id": 2,
+											"description": "1 stick of butter",
+											"dish_id": 1
+										}										
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
