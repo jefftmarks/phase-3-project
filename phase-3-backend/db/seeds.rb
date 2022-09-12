@@ -17,7 +17,7 @@ end
 
 10.times do |i|
 	Menu.create(
-		name: ["Halloween", "Christmas", "Birthday", "Thahksgiving"].sample + " " + ["Breakfast", "Lunch", "Dinner"].sample,
+		name: ["Halloween", "Christmas", "Birthday", "Thanksgiving"].sample + " " + ["Breakfast", "Lunch", "Dinner"].sample,
 		image_url: "https://static.onecms.io/wp-content/uploads/sites/44/2019/08/26231113/5783153.jpg",
 		description: Faker::Lorem.sentence(word_count: 10),
 		date: Faker::Date.in_date_period,
