@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_12_173825) do
+ActiveRecord::Schema.define(version: 2022_09_12_202100) do
 
   create_table "courses", force: :cascade do |t|
     t.string "category"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2022_09_12_173825) do
     t.string "username"
     t.string "password"
     t.string "image_url"
-    t.boolean "is_active?"
+    t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,21 +1,14 @@
 import React from "react";
-import Login from './components/Login'
-import Feed from './components/Feed'
-import NavBar from './components/NavBar'
-import Profile from './components/Profile'
-import SignUp from './components/SignUp'
-import MenuPage from './components/MenuPage'
-import MenuForm from './components/MenuForm'
+import Login from './components/Login';
+import Feed from './components/Feed';
+import NavBar from './components/NavBar';
+import Profile from './components/Profile';
+import SignUp from './components/SignUp';
+import MenuPage from './components/MenuPage';
+import MenuForm from './components/MenuForm';
 import { Route, Routes } from 'react-router-dom'
 
-
-
 function App() {
-  // const [currentUser, setCurrentUser] = useState({})
-  // const [isLoggedIn, setIsLoggedin] = useState(false)
-  // const [hasAccount, setHasAccount] = useState(false)
-
-
 
   return (
     <div className="App">
@@ -33,24 +26,4 @@ function App() {
   )
 }
 
-    
-
 export default App;
-      
-
-
-//        {hasAccount ? 
-//        <>
-//      <Login setHasAccount = {() => setHasAccount(false)} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} setCurrentUser={setCurrentUser} />
-//       </> : 
-//       <SignUp currentUser={currentUser} setCurrentUser={setCurrentUser} setIsLoggedIn={setIsLoggedIn} />
-//        }
-//       <Feed  />
-//       <MenuPage /> 
-//       <MenuForm/>
-//       <Profile /> 
-//       </Switch>
-//     </div>
-//   );
-// }
-
