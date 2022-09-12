@@ -15,7 +15,7 @@ function App() {
 
 	// When homepage loads, if no active user, navigate to login page
 	useEffect(() => {
-		fetch("http://localhost:9292/users/find_active")
+		fetch("http://localhost:9292/find_active_user")
 			.then(res => res.json())
 			.then(user => {
 				if (user) {

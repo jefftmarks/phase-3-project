@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
   end
 
 	# See if a user is already logged on, otherwise return empty array
-	get "/users/find_active" do
+	get "/find_active_user" do
 		active_user = User.find_by(is_active: true)
 		active_user.to_json
 	end
