@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_12_164043) do
+ActiveRecord::Schema.define(version: 2022_09_12_173825) do
 
   create_table "courses", force: :cascade do |t|
-    t.string "type"
+    t.string "category"
     t.integer "menu_id"
   end
 

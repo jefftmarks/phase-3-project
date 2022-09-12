@@ -17,9 +17,9 @@ end
 
 10.times do |i|
 	Menu.create(
-		name: ["Halloween", "Christmas", "Birthday", "Thahksgiving"].sample + ["Breakfast", "Lunch", "Dinner"].sample
+		name: ["Halloween", "Christmas", "Birthday", "Thahksgiving"].sample + " " + ["Breakfast", "Lunch", "Dinner"].sample,
 		image_url: "https://static.onecms.io/wp-content/uploads/sites/44/2019/08/26231113/5783153.jpg",
-		description: Faker::Food.ethnic_category,
+		description: Faker::Lorem.sentence(word_count: 10),
 		date: Faker::Date.in_date_period,
 		user_id: User.all.sample.id
 	)
@@ -27,7 +27,7 @@ end
 
 20.times do |i|
 	Course.create(
-		type: ["Appetizer", "Entree", "Main", "Side", "Dessert"].sample,
+		category: ["Appetizer", "Entree", "Main", "Side", "Dessert"].sample,
 		menu_id: Menu.all.sample.id,
 	)
 end
@@ -35,7 +35,7 @@ end
 20.times do |i|
 	Dish.create(
 		name: Faker::Food.dish,
-		description: Faker::Food.description,
+		description: Faker::Food.ethnic_category,
 		course_id: Course.all.sample.id,
 	)
 end
