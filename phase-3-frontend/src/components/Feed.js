@@ -1,28 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 
-function Feed () {
+function Feed ({ activeUser }) {
 
-	const navigate = useNavigate();
-
-	// When homepage loads, if no active user, navigate to login page
-	useEffect(() => {
-		fetch("http://localhost:9292/users/find_active")
-			.then(res => res.json())
-			.then(user => {
-				if (user.length > 0) {
-					console.log(user)
-				}
-				else {
-					navigate("/login")
-				}
-			})
-			.catch(e => console.error(e))
-	},[navigate])
-
-	return ( 
+	return (
 		<div>
-			<h1>Feed</h1> 
+			<h1>{activeUser.first_name}'s Feed</h1>
 		</div>    
 	)
 }

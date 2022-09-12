@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function Login() {
-	const initialValues = {username: "", password: ""};
+function Login({ setActiveUser }) {
+	const initialValues = {username: "", password: ""}
 	const [formData, setFormData] = useState(initialValues)
+
+	const navigate = useNavigate();
 
 	function handleChange(event) {
 		const { name, value } = event.target;
@@ -12,8 +14,30 @@ function Login() {
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		
+		fetch(`http://localhost:9292/users/validate/${formData.username}`)
+			.then(res => res.json())
+			.then(user => handleLogin(user))
+			.catch(e => console.error(e))
 		setFormData(initialValues)
+	}
+
+	function handleLogin(user) {
+		if (!user) {
+			alert("Username does not exist");
+		} else if (formData.password !== user.password) {
+			alert("Password incorrect");
+		} else {
+			fetch(`http://localhost:9292/users/${user.id}`, {
+				method: "PATCH",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: { is_active: true }
+			})
+				.then(res => res.json())
+				.then(user => console.log(user))
+				.catch(e => console.error(e))
+		}
 	}
 
 	return ( 
