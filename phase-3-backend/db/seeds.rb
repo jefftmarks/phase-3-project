@@ -11,7 +11,7 @@ User.destroy_all
 		username: Faker::Internet.username,
 		password: Faker::Internet.password(min_length: 8, max_length: 20),
 		image_url: Faker::Avatar.image,
-		is_active?: false
+		is_active: false
 	)
 end
 

@@ -1,3 +1,5 @@
+require "pry"
+
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
@@ -12,7 +14,7 @@ class ApplicationController < Sinatra::Base
 		active_user.to_json
 	end
 
-	get "/users/validate/:username" do
+	get "/validate/:username" do
 		user = User.find_by(username: params[:username])
 		user.to_json
 	end
@@ -22,7 +24,7 @@ class ApplicationController < Sinatra::Base
     user.to_json(include: :menus)
   end
 
-	patch "/users/:id" do
+	patch "/set_active_user/:id" do
 		user = User.find(params[:id])
 		user.update(is_active: params[:is_active])
 		user.to_json
