@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
 function DishForm({ handleUpdateDishes, dishNum, isDeletable, onDeleteDish }) {
@@ -7,12 +7,10 @@ function DishForm({ handleUpdateDishes, dishNum, isDeletable, onDeleteDish }) {
 
 	function handleChange(event) {
 		const { name, value } = event.target;
-		setDishData(dishData => ({...dishData, [name]: value, dishNum: parseInt(dishNum)}))
+		const updatedDishData = {...dishData, [name]: value, dishNum: parseInt(dishNum)}
+		setDishData(updatedDishData);
+		handleUpdateDishes(updatedDishData);
 	}
-
-	useEffect(() => {
-		handleUpdateDishes(dishData)
-	}, [dishData])
 
 	return (
     <div style={{border: "1px solid black", margin: "10px", paddingLeft: "5px", backgroundColor: "#e6ffeb" }}>

@@ -39,27 +39,29 @@ function CourseForm({ handleUpdateCourses, courseNum, isDeletable }) {
 			setDishes(updatedDishes);
 		}
 	}
+	
 
+	function onDeleteDish(dishNum){
+		const updatedDishList = dishList.filter(dish => {
+			return dish.dishNum !== dishNum;
+		})
+		setDishList(updatedDishList);
 
-	function onDeleteDish(){
+		const updatedDishes = dishes.filter(dish => {
+			return dish.dishNum !== dishNum;
+		})
 
-		console.log(dishList);
+		setDishes(updatedDishes);
+
 	}
-
 
 	
 	function onAddDishClick(){
 		const id = dishList.length + 2;
-		setDishList([
-			...dishList,
-			<DishForm
-				key={id}
-				handleUpdateDishes={handleUpdateDishes}
-				dishNum={id}
-				isDeletable={true}
-				onDeleteDish={() => onDeleteDish()}
-			/>
-		])
+		const dishObj = {
+			dishNum: id
+		}
+		setDishList(dishList => ([...dishList, dishObj]))
 	}
 
 	return (
@@ -85,7 +87,15 @@ function CourseForm({ handleUpdateCourses, courseNum, isDeletable }) {
 			<button style={{marginTop: "15px"}} onClick={onAddDishClick}>Add Dish</button>
 
 			<DishForm handleUpdateDishes={handleUpdateDishes} dishNum="1" />
-			{dishList}
+			{dishList.map(dish => (
+				<DishForm
+				key={dish.dishNum}
+				dishNum={dish.dishNum}
+				handleUpdateDishes={handleUpdateDishes}
+				isDeletable={true}
+				onDeleteDish={onDeleteDish}
+				/>
+			))}
 				
 		</div>
 	)
