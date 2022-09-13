@@ -4,7 +4,7 @@ function Feed ({ activeUser }) {
 
 	return (
 		<div>
-			<h1>{activeUser.first_name}'s Feed</h1>
+			{activeUser ? <h1>{activeUser.first_name}'s Feed</h1> : null }
 		</div>    
 	)
 }

@@ -9,7 +9,7 @@ import MenuForm from './components/MenuForm';
 import { Route, Routes, useNavigate } from 'react-router-dom'
 
 function App() {
-	const [activeUser, setActiveUser] = useState({})
+	const [activeUser, setActiveUser] = useState(null)
 
 	const navigate = useNavigate();
 
@@ -26,18 +26,24 @@ function App() {
 				}
 			})
 			.catch(e => console.error(e))
-	},[navigate])
+	},[])
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar activeUser={activeUser} setActiveUser={setActiveUser} />
       <Routes>
         <Route
 					path='/login'
-					element={<Login setActiveUser={setActiveUser} />}
+					element={<Login setActiveUser={setActiveUser} activeUser={activeUser} />}
 				/>
-        <Route path='/signup' element={<SignUp />}/>
-        <Route path='/user/:username' element={<Profile />}/>
+        <Route
+					path='/signup'
+					element={<SignUp setActiveUser={setActiveUser} activeUser={activeUser} />}
+				/>
+        <Route
+					path='/user/:username'
+					element={<Profile activeUser={activeUser} />}
+				/>
         <Route path='/menu/:menu_id' element={<MenuPage />}/>
         <Route path='/create-menu' element={<MenuForm />}/>
         <Route path='/edit-menu/:menu_id' element={<MenuForm />}/>
