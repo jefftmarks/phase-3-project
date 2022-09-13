@@ -43,7 +43,7 @@ class ApplicationController < Sinatra::Base
 			last_name: params[:last_name],
 			username: params[:username],
 			password: params[:password],
-			image_url: "",
+			image_url: params[:image_url],
 			is_active: true
 		)
 		user.to_json

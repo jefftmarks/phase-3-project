@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 
 function Profile ({ activeUser }) {
@@ -15,7 +15,17 @@ function Profile ({ activeUser }) {
 
 	return ( 
     <div>
-        {profile ? <h1>{profile.first_name}'s Profile</h1> : null} 
+			<Link to={`/edit-user/${activeUser.username}`}><button>Edit Profile</button></Link>
+			{profile ? (
+				<>
+					<h1>{profile.first_name}'s Profile</h1>
+					<img
+						src={profile.image_url}
+						alt="profile"
+						style={{height: "200px", width: "auto"}}
+					/>
+				</>
+			) : null}
     </div>    
   )
 }

@@ -8,7 +8,8 @@ function SignUp ({ activeUser, setActiveUser }) {
 		first_name: "",
 		last_name: "",
 		username: "",
-		password: ""
+		password: "",
+		image_url: "",
 	};
 
 	const [formData, setFormData] = useState(initialValues);
@@ -42,7 +43,6 @@ function SignUp ({ activeUser, setActiveUser }) {
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		console.log(formData)
 		fetch("http://localhost:9292/users", {
 			method: "POST",
 			headers: {
@@ -53,7 +53,8 @@ function SignUp ({ activeUser, setActiveUser }) {
 			.then(res => res.json())
 			.then(user => {
 				setActiveUser(user);
-				navigate(`/user/${user.username}`)
+				setFormData(initialValues);
+				navigate(`/user/${user.username}`);
 			})
 			.catch(e => console.error(e));
 	}
@@ -104,10 +105,22 @@ function SignUp ({ activeUser, setActiveUser }) {
 
 				<br />
 
-				<label htmlFor="login-password">password:</label>
+				<label htmlFor="signup-image-url">profile image:</label>
 				<input
 					required
-					id="login-password"
+					id="signup-image-url"
+					type="image-url"
+					name="image_url"
+					value={formData.image_url}
+					onChange={handleChange}
+				/>
+
+				 <br />
+
+				<label htmlFor="signup-password">password:</label>
+				<input
+					required
+					id="signup-password"
 					type="password"
 					name="password"
 					pattern="^[A-Za-z0-9]{5,15}$"
@@ -121,14 +134,14 @@ function SignUp ({ activeUser, setActiveUser }) {
 				 <br />
 
 				<label
-				 	htmlFor="confirm-login-password"
+				 	htmlFor="confirm-password"
 					style={passwordsMatch ? { color: "green"} : { color: "red"}}
 				>
 					confirm password:
 				</label>
 				<input
 					required
-					id="confirm-login-password"
+					id="confirm-password"
 					type="password"
 					name="confirim-password"
 					pattern="^[A-Za-z0-9]{5,15}$"
