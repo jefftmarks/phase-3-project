@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_12_202100) do
+ActiveRecord::Schema.define(version: 2022_09_13_155954) do
 
   create_table "courses", force: :cascade do |t|
     t.string "category"
@@ -21,11 +21,7 @@ ActiveRecord::Schema.define(version: 2022_09_12_202100) do
     t.string "name"
     t.string "description"
     t.integer "course_id"
-  end
-
-  create_table "ingredients", force: :cascade do |t|
-    t.string "description"
-    t.integer "dish_id"
+    t.string "ingredients"
   end
 
   create_table "likes", force: :cascade do |t|

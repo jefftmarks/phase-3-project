@@ -5,29 +5,64 @@ function MenuForm () {
 	const initialMenu = {name: "", date: "", description: "", image_url: "", courses: []}
 
 	const [menuData, setMenuData] = useState(initialMenu);
+	const [courses, setCourses] = useState([]);
+	const [courseList, setCourseList] = useState([])
+
 
 	function handleChange(event) {
 		const { name, value } = event.target;
 		setMenuData(menuData => ({...menuData, [name]: value}))
 	}
+	
 
-	function updateCourses(courseData) {
-		setMenuData(menuData => ({
-			...menuData,
-			courses: [...menuData.courses, courseData]
-		}))
+	function handleUpdateCourses(courseData) {
+		let updatedCourses;
+
+		if (courses.length === 0 || !courses.find(course => course.courseNum === courseData.courseNum)) {
+			updatedCourses = [...courses, courseData];
+		} else {
+			updatedCourses = courses.map(course => {
+				if (course.courseNum === courseData.courseNum) {
+					return courseData;
+				} else {
+					return course;
+				}
+			})
+		}
+	
+		if (courseData.courseNum !== "") {
+			setCourses(updatedCourses);
+		}
 	}
+
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		console.log(menuData);
+		const updatedMenu = {...menuData, courses: courses}
+		console.log(updatedMenu);
 		setMenuData(initialMenu);
+	}
+
+
+	function onAddCourseClick(){
+		const id = courseList.length + 2;
+		console.log(id)
+		setCourseList([
+			...courseList,
+			<CourseForm key={id} handleUpdateCourses={handleUpdateCourses} courseNum={id} />
+		])
 	}
 
 	return (
     <div>
 			<h1>Create Your Menu</h1>
-			<form className="create-menu-form" onSubmit={handleSubmit} style={{border: "1px solid black"}}>
+			<form
+				className="create-menu-form"
+				onSubmit={handleSubmit}
+				style={{border: "1px solid black", paddingLeft: "5px", backgroundColor: "#f9e6ff"}}
+			>
+
+				<h2>Menu</h2>
 
 				<label htmlFor="create-menu-name">name:</label>
 				<input
@@ -75,7 +110,12 @@ function MenuForm () {
 					onChange={handleChange}
 				></textarea>
 
-				<CourseForm updateCourses={updateCourses} />
+				<br />
+
+				<button style={{marginTop: "15px"}} onClick={onAddCourseClick}>Add Course</button>
+
+				<CourseForm handleUpdateCourses={handleUpdateCourses} courseNum="1" />
+				{courseList}
 
 				<input type="submit" value="Submit Menu"/>
 
