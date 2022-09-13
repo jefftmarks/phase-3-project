@@ -49,7 +49,12 @@ function MenuForm () {
 		console.log(id)
 		setCourseList([
 			...courseList,
-			<CourseForm key={id} handleUpdateCourses={handleUpdateCourses} courseNum={id} />
+			<CourseForm
+				key={id}
+				handleUpdateCourses={handleUpdateCourses}
+				courseNum={id}
+				isDeletable={true}
+			/>
 		])
 	}
 

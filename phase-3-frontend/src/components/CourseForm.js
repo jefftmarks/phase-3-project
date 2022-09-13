@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import DishForm from "./DishForm";
+import { RiDeleteBin5Line } from "react-icons/ri";
 
-function CourseForm({ handleUpdateCourses, courseNum }) {
+function CourseForm({ handleUpdateCourses, courseNum, isDeletable }) {
 	const initialCourse = {category: "", courseNum: "", dishes: []};
 	const [courseData, setCourseData] = useState(initialCourse);
 	const [dishes, setDishes] = useState([]);
 	const [dishList, setDishList] = useState([]);
-
 
 	function handleChange(event) {
 		const { name, value } = event.target;
@@ -40,18 +40,35 @@ function CourseForm({ handleUpdateCourses, courseNum }) {
 		}
 	}
 
+
+	function onDeleteDish(){
+
+		console.log(dishList);
+	}
+
+
 	
 	function onAddDishClick(){
 		const id = dishList.length + 2;
 		setDishList([
 			...dishList,
-			<DishForm key={id} handleUpdateDishes={handleUpdateDishes} dishNum={id} />
+			<DishForm
+				key={id}
+				handleUpdateDishes={handleUpdateDishes}
+				dishNum={id}
+				isDeletable={true}
+				onDeleteDish={() => onDeleteDish()}
+			/>
 		])
 	}
 
 	return (
     <div style={{border: "1px solid black", margin: "10px", paddingLeft: "5px", backgroundColor: "#fff4e6"}}>
-			<h2>Course</h2>
+			<h2>Course {isDeletable ? (
+				<button style={{cursor: "pointer"}}>
+					<RiDeleteBin5Line size="15" />
+				</button>
+			): null}</h2>
 
 			<label htmlFor="create-course-category">category:</label>
 			<input
@@ -67,7 +84,7 @@ function CourseForm({ handleUpdateCourses, courseNum }) {
 
 			<button style={{marginTop: "15px"}} onClick={onAddDishClick}>Add Dish</button>
 
-			<DishForm handleUpdateDishes={handleUpdateDishes} dishNum="1"/>
+			<DishForm handleUpdateDishes={handleUpdateDishes} dishNum="1" />
 			{dishList}
 				
 		</div>
