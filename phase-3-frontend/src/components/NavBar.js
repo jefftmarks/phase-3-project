@@ -31,7 +31,8 @@ function NavBar({ activeUser, setActiveUser })  {
 				<>
 					<button onClick={handleLogout}>Log Out</button>
 					<Link to={`/user/${activeUser.username}`}><button>Profile</button></Link>
-					<Link to={"/"}><button>Feed</button></Link>
+					<Link to={"/"}><button>Feed</button></Link> 
+					<Link to={"/create-menu"}><button>Create Menu</button></Link>
 				</>	
 			) : null}
     </div>

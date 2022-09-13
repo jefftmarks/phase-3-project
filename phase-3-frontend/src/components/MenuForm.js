@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import CourseForm from "./CourseForm";
 
 function MenuForm () {
-	
+	const initialMenu = {name: "", date: "", description: "", image_url: "", courses: []}
+
+	const [menuData, setMenuData] = useState(initialMenu);
+
+	function handleChange(event) {
+		const { name, value } = event.target;
+		setMenuData(menuData => ({...menuData, [name]: value}))
+	}
+
+	function updateCourses(courseData) {
+		setMenuData(menuData => ({
+			...menuData,
+			courses: [...menuData.courses, courseData]
+		}))
+	}
+
+	function handleSubmit(event) {
+		event.preventDefault();
+		console.log(menuData);
+		setMenuData(initialMenu);
+	}
 
 	return (
     <div>
 			<h1>Create Your Menu</h1>
-			<form className="menu-form">
+			<form className="create-menu-form" onSubmit={handleSubmit} style={{border: "1px solid black"}}>
 
 				<label htmlFor="create-menu-name">name:</label>
 				<input
@@ -15,8 +36,8 @@ function MenuForm () {
 					type="text"
 					name="name"
 					placeholder="Menu Title"
-					// value={menuData.name}
-					// onChange={handleChange}
+					value={menuData.name}
+					onChange={handleChange}
 				/>
 
 				<br />
@@ -27,8 +48,8 @@ function MenuForm () {
 					id="create-menu-date"
 					type="date"
 					name="date"
-					// value={menuData.date}
-					// onChange={handleChange}
+					value={menuData.date}
+					onChange={handleChange}
 				/>
 
 				<br />
@@ -39,25 +60,24 @@ function MenuForm () {
 					id="create-menu-image"
 					type="text"
 					name="image_url"
-					// value={menuData.date}
-					// onChange={handleChange}
+					value={menuData.image_url}
+					onChange={handleChange}
 				/>
 
 				<br />
 
-				<label htmlFor="create-menu-description">description:</label>
-				<input
+				<label htmlFor="create-menu-description">description:</label><br/>
+				<textarea
 					required
 					id="create-menu-description"
-					type="text"
 					name="description"
-					// value={menuData.date}
-					// onChange={handleChange}
-				/>
+					value={menuData.description}
+					onChange={handleChange}
+				></textarea>
 
-				<br/>
+				<CourseForm updateCourses={updateCourses} />
 
-				<input type="submit" value="submit"/>
+				<input type="submit" value="Submit Menu"/>
 
 			</form>
 		</div>
