@@ -6,14 +6,14 @@ import Profile from './components/Profile';
 import SignUp from './components/SignUp';
 import MenuPage from './components/MenuPage';
 import MenuForm from './components/MenuForm';
+import EditProfileForm from './components/EditProfileForm';
 import { Route, Routes, useNavigate } from 'react-router-dom'
 
 function App() {
-	const [activeUser, setActiveUser] = useState({})
+	const [activeUser, setActiveUser] = useState(null)
 
 	const navigate = useNavigate();
 
-	// When homepage loads, if no active user, navigate to login page
 	useEffect(() => {
 		fetch("http://localhost:9292/find_active_user")
 			.then(res => res.json())
@@ -26,18 +26,28 @@ function App() {
 				}
 			})
 			.catch(e => console.error(e))
-	},[navigate])
+	},[])
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar activeUser={activeUser} setActiveUser={setActiveUser} />
       <Routes>
         <Route
 					path='/login'
-					element={<Login setActiveUser={setActiveUser} />}
+					element={<Login setActiveUser={setActiveUser} activeUser={activeUser} />}
 				/>
-        <Route path='/signup' element={<SignUp />}/>
-        <Route path='/user/:username' element={<Profile />}/>
+        <Route
+					path='/signup'
+					element={<SignUp setActiveUser={setActiveUser} activeUser={activeUser} />}
+				/>
+        <Route
+					path='/user/:username'
+					element={<Profile activeUser={activeUser} />}
+				/>
+				<Route
+					path='/edit-user/:username'
+					element={<EditProfileForm activeUser={activeUser} setActiveUser={setActiveUser} />}
+				/>
         <Route path='/menu/:menu_id' element={<MenuPage />}/>
         <Route path='/create-menu' element={<MenuForm />}/>
         <Route path='/edit-menu/:menu_id' element={<MenuForm />}/>
