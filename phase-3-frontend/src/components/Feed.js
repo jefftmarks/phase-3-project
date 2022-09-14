@@ -1,27 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './Feed.css'
-import Card from './Card.js'
 
 function Feed ({ activeUser}) {
-//const [formData, setFormData] = useState(initialValues);
-
-// mapping over menu cards mayve make diff component
-
-	//function handleChange(event) {
-  //  const { name, value } = event.target;
-  //  setFormData((formData) => ({ ...formData, [name]: value }));
-  //}
-
+	const [menus, setMenus] = useState([])
 
   useEffect(() => {
-	fetch(`http://localhost:9292/your_recent_menus/${activeUser.id}`)
-	.then(res => res.json())
-	.then(menus => {
-		setMenus(menus)
-	})
-
-  },[])
-
+		if (activeUser) {
+			setMenus(activeUser.menus)
+		}
+  },[activeUser])
 
 	return (
     <div>
@@ -32,9 +19,9 @@ function Feed ({ activeUser}) {
           <p className="card-text">Your Feed</p>
           <br />
           <span className="phone">345083737338</span>
-          {menus.map((menu) => {
-            return <Carousel menu={menu} key={menu.id} />;
-          })}
+          {/* {menus.map((menu) => {
+            return <Carousels menu={menu} key={menu.id} />;
+          })} */}
         </>
       ) : null}
     </div>
