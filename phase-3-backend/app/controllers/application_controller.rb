@@ -88,7 +88,7 @@ class ApplicationController < Sinatra::Base
 	get "/your_recent_menus/:id" do
 		user = User.find(params[:id])
 
-		menus = user.menus.order(:created_at).limit(6);
+		menus = user.menus.order(:created_at).limit(6).to_json
 
 	end
 

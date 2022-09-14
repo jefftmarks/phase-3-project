@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import './Feed.css'
+import Card from './Card.js'
+import Carousel from "better-react-carousel";
+
 
 function Feed ({ activeUser}) {
+const [menus, setMenus] = useState([])
 //const [formData, setFormData] = useState(initialValues);
 
 // mapping over menu cards mayve make diff component
@@ -11,68 +15,51 @@ function Feed ({ activeUser}) {
   //  setFormData((formData) => ({ ...formData, [name]: value }));
   //}
 
+  useEffect(() => {
+	fetch(`http://localhost:9292/your_recent_menus/${activeUser.id}`)
+	.then(res => res.json())
+	.then(menus => {
+		setMenus(menus)
+	})
+
+  },[])
+
+
+
+
 	return (
-		<div>
-			{activeUser ? <h1>{activeUser.first_name}'s Feed</h1> : null }
-			  <div class="user-profile-container">
-                <div class="user-image-container">
-                    <img src="http://via.placeholder.com/100x100" />
+    <div className="contain-feed">
+      {activeUser ? <h1>{activeUser.first_name}'s Feed</h1> : null}
+      <div className="feed-clearfix">
+        <div className="feed-row">
+          <div className="feed-col-md-4 animated fadeIn">
+            <div className="feed-card">
+              <div className="feed-card-body">
+                <div className="feed-avatar">
+                  <img
+                    src="https://randomuser.me/api/portraits/women/60.jpg"
+                    className="feed-card-img-top"
+                  />
                 </div>
-                <div class="user-name-container">
-                    <div class="user-name">{activeUser.first_name}</div>
-                    <div class="user-handle"></div>
-                </div>
-
-                <div class="user-details-container">
-                    <div class="row text-center">
-                        <div class="col-xs-4">
-                            <div class="user-details-title">Tweets</div>
-                            <div class="user-details-count">2</div>
-                        </div>
-                        <div class="col-xs-4">
-                            <div class="user-details-title">Follows</div>
-                            <div class="user-details-count">12</div>
-                        </div>
-                        <div class="col-xs-4">
-                            <div class="user-details-title">Followers</div>
-                            <div class="user-details-count">1</div>
-                        </div>
-                    </div>
-                </div>
+                <h5 className="card-title">
+                 {activeUser.first_name}
+                </h5>
+                <p className="card-text">
+                  Your Feed 
+                  <br />
+                  <span className="phone">345083737338</span>
+				  <Carousel ></Carousel>
+                  {menus.map((menu) => {
+                    return <Card menu={menu} key={menu.id} />;
+                  })}
+                </p>
+              </div>
             </div>
-			  <div class="col-md-6 feed">
-
-
-            <div class="create-tweet-container">
-                <form action="">
-                    <input type="text" />
-                    <button class="pull-right" type="submit">tweet</button>
-                </form>
-            </div>
-			</div>            
-                        <div class="author-image-container">
-                            <img src="http://via.placeholder.com/60x60"/>
-
-                        </div>
-                        <div class="tweet-creator-data-container">
-                            <div class="author-name">Fred Flinstone</div>
-                            <div class="author-handle">@FredFlinstone</div>
-                            <div class="tweet-timestamp">37m</div>
-                        </div>
-                        <div class="tweet-content">
-                            <p>Here is a tweet</p>
-
-                        </div>
-                        <div class="tweet-publish-data-container">
-                            <div class="replies-container">1</div>
-                            <div class="retweets-container">3</div>
-                            <div class="favorited-container">1</div>
-                            <div class="message-author-container"></div>
-                        </div>
-                 {/*<!--end feed container --> */}
-            </div>
-			
-	)
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Feed;
