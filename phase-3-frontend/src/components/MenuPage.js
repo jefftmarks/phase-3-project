@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 function MenuPage ({ activeUser }) {
 	const [menu, setMenu] = useState({});
@@ -65,7 +65,7 @@ function MenuPage ({ activeUser }) {
 
 					{isActiveUser ? (
 						<>
-							<button>Edit Menu</button>
+							<Link to={`/edit-menu/${menu.id}`}><button>Edit Menu</button></Link>
 							<button onClick={handleDeleteMenu}>Delete Menu</button>
 						</>
 					) : null}

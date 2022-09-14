@@ -8,6 +8,7 @@ function CourseForm({ handleUpdateCourses, courseNum, courseList, onDeleteCourse
 	const [dishes, setDishes] = useState([]);
 	const [dishList, setDishList] = useState([{ dishNum: 1, id: 1 }]);
 
+
 	function handleChange(event) {
 		const { name, value } = event.target;
 		setCourseData(courseData => ({...courseData, [name]: value, courseNum: parseInt(courseNum)}))

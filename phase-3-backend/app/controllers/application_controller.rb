@@ -101,5 +101,9 @@ class ApplicationController < Sinatra::Base
 		menus = user.menus.order(:created_at).limit(6).to_json
 	end
 
+	get "courses/:id" do
+		
+	end
+
 end
 
