@@ -1,0 +1,181 @@
+body {
+    background: linear-gradient(90deg, #adaac3, #9997b1);
+    }
+
+
+.user-profile-container {
+    padding: 40px 0 15px;
+    margin-bottom: 20px;
+    background: linear-gradient(180deg, #5d5789, #4338c0);
+}
+
+.user-profile-container .user-image-container {
+    float: left;
+    width: 75px;
+    margin: 0 15px;
+}
+
+.user-profile-container .user-image-container img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.user-profile-container .user-name-container {
+    float: left;
+    padding-top: 15px;
+}
+
+.user-profile-container .user-details-container {
+    clear: both;
+    padding: 15px;
+}
+
+.top-trends-container {
+    background: #fff;
+    padding: 15px;
+}
+
+.top-trends-container .top-trends {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.create-tweet-container {
+    background: #e0e0e0;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.create-tweet-container form {
+    background: #fff;
+    border: 1px solid #dfdfdf;
+    padding: 15px;
+}
+
+.create-tweet-container form input {
+    border: none;
+    width: 300px;
+}
+
+.feed {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.feed .tweet-container {
+    background: #fff;
+    border-top: 1px solid #dfdfdf;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.feed .tweet-container .author-image-container {
+    float: left;
+    margin-right: 15px;
+}
+
+.feed .tweet-container .author-image-container img {
+    width: 45px;
+    border-radius: 50%;
+}
+
+.feed .tweet-container .tweet-creator-data-container {
+    margin-top: 10px;
+}
+
+.feed .tweet-container .tweet-creator-data-container>div {
+    float: left;
+    margin-right: 15px;
+}
+
+.feed .tweet-container .tweet-content {
+    clear: both;
+    margin: 15px 0 15px 60px;
+}
+
+.feed .tweet-container .tweet-publish-data-container {
+    margin-left: 60px;
+    padding-bottom: 30px;
+}
+
+.feed .tweet-container .tweet-publish-data-container>div {
+    float: left;
+    margin-right: 15px;
+}
+
+.follow-container {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.follow-container ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.follow-container ul .follow {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 15px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.follow-container ul .follow .account-image {
+    float: left;
+    margin-right: 15px;
+}
+
+.follow-container ul .follow .account-image img {
+    border-radius: 50%;
+    width: 45px;
+}
+
+.follow-container ul .follow .account-information-container {
+    float: left;
+}
+
+.follow-container ul .follow .follow-button {
+    clear: both;
+    float: right;
+}
+
+.ad-container {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.ad-container img {
+    width: 100%;
+}
+
+.support-container {
+    background: #fff;
+    padding: 15px;
+    overflow: hidden;
+}
+
+.support-container ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.support-container ul li {
+    float: left;
+    margin-right: 15px;
+}
+
+.tweet-container {
+    position: relative;
+}
+
+.tweet-options {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
