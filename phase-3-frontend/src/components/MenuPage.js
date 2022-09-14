@@ -65,7 +65,7 @@ function MenuPage ({ activeUser }) {
 
 					{isActiveUser ? (
 						<>
-							<Link to={`/edit-menu/${menu.id}`}><button>Edit Menu</button></Link>
+							{/* <Link to={`/edit-menu/${menu.id}`}><button>Edit Menu</button></Link> */}
 							<button onClick={handleDeleteMenu}>Delete Menu</button>
 						</>
 					) : null}

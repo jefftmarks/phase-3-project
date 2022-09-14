@@ -1,7 +1,0 @@
-.tip-text {
-	visibility: hidden;
-}
-
-.tip:hover .tip-text {
-	visibility: visible;
-}
