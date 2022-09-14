@@ -1,14 +1,15 @@
 import React from "react";
 import './Feed.css'
 
-function Feed ({ activeUser }) {
-const [formData, setFormData] = useState(initialValues);
+function Feed ({ activeUser}) {
+//const [formData, setFormData] = useState(initialValues);
 
+// mapping over menu cards mayve make diff component
 
-	function handleChange(event) {
-    const { name, value } = event.target;
-    setFormData((formData) => ({ ...formData, [name]: value }));
-  }
+	//function handleChange(event) {
+  //  const { name, value } = event.target;
+  //  setFormData((formData) => ({ ...formData, [name]: value }));
+  //}
 
 	return (
 		<div>
@@ -18,7 +19,7 @@ const [formData, setFormData] = useState(initialValues);
                     <img src="http://via.placeholder.com/100x100" />
                 </div>
                 <div class="user-name-container">
-                    <div class="user-name">Fred</div>
+                    <div class="user-name">{activeUser.first_name}</div>
                     <div class="user-handle"></div>
                 </div>
 
@@ -39,7 +40,38 @@ const [formData, setFormData] = useState(initialValues);
                     </div>
                 </div>
             </div>
-		</div> 
+			  <div class="col-md-6 feed">
+
+
+            <div class="create-tweet-container">
+                <form action="">
+                    <input type="text" />
+                    <button class="pull-right" type="submit">tweet</button>
+                </form>
+            </div>
+			</div>            
+                        <div class="author-image-container">
+                            <img src="http://via.placeholder.com/60x60"/>
+
+                        </div>
+                        <div class="tweet-creator-data-container">
+                            <div class="author-name">Fred Flinstone</div>
+                            <div class="author-handle">@FredFlinstone</div>
+                            <div class="tweet-timestamp">37m</div>
+                        </div>
+                        <div class="tweet-content">
+                            <p>Here is a tweet</p>
+
+                        </div>
+                        <div class="tweet-publish-data-container">
+                            <div class="replies-container">1</div>
+                            <div class="retweets-container">3</div>
+                            <div class="favorited-container">1</div>
+                            <div class="message-author-container"></div>
+                        </div>
+                 {/*<!--end feed container --> */}
+            </div>
+			
 	)
 }
 
