@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import DishForm from "./DishForm";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
-function CourseForm({ handleUpdateCourses, courseNum, isDeletable }) {
+function CourseForm({ handleUpdateCourses, courseNum, courseList, onDeleteCourse }) {
 	const initialCourse = {category: "", courseNum: "", dishes: []};
 	const [courseData, setCourseData] = useState(initialCourse);
 	const [dishes, setDishes] = useState([]);
-	const [dishList, setDishList] = useState([]);
+	const [dishList, setDishList] = useState([{ dishNum: 1, id: 1 }]);
 
 	function handleChange(event) {
 		const { name, value } = event.target;
@@ -23,7 +23,9 @@ function CourseForm({ handleUpdateCourses, courseNum, isDeletable }) {
 	function handleUpdateDishes(dishData) {
 		let updatedDishes;
 
-		if (dishes.length === 0 || !dishes.find(dish => dish.dishNum === dishData.dishNum)) {
+		const dishExists = dishes.find(dish => dish.dishNum === dishData.dishNum);
+
+		if (!dishExists) {
 			updatedDishes = [...dishes, dishData];
 		} else {
 			updatedDishes = dishes.map(dish => {
@@ -34,10 +36,7 @@ function CourseForm({ handleUpdateCourses, courseNum, isDeletable }) {
 				}
 			})
 		}
-		
-		if (dishData.dishNum !== "") {
-			setDishes(updatedDishes);
-		}
+		setDishes(updatedDishes);
 	}
 	
 
@@ -50,25 +49,25 @@ function CourseForm({ handleUpdateCourses, courseNum, isDeletable }) {
 		const updatedDishes = dishes.filter(dish => {
 			return dish.dishNum !== dishNum;
 		})
-
 		setDishes(updatedDishes);
-
 	}
 
 	
-	function onAddDishClick(){
-		const id = dishList.length + 2;
+	function onAddDishClick(event){
+		event.preventDefault();
+		const id = dishList.length + 1;
 		const dishObj = {
-			dishNum: id
+			dishNum: id,
+			id: Date.now()
 		}
 		setDishList(dishList => ([...dishList, dishObj]))
 	}
 
 	return (
     <div style={{border: "1px solid black", margin: "10px", paddingLeft: "5px", backgroundColor: "#fff4e6"}}>
-			<h2>Course {isDeletable ? (
+			<h2>Course {courseList.length > 1 ? (
 				<button style={{cursor: "pointer"}}>
-					<RiDeleteBin5Line size="15" />
+					<RiDeleteBin5Line size="18" onClick={() => onDeleteCourse(courseNum)} />
 				</button>
 			): null}</h2>
 
@@ -86,13 +85,12 @@ function CourseForm({ handleUpdateCourses, courseNum, isDeletable }) {
 
 			<button style={{marginTop: "15px"}} onClick={onAddDishClick}>Add Dish</button>
 
-			<DishForm handleUpdateDishes={handleUpdateDishes} dishNum="1" />
 			{dishList.map(dish => (
 				<DishForm
-				key={dish.dishNum}
+				key={dish.id}
 				dishNum={dish.dishNum}
 				handleUpdateDishes={handleUpdateDishes}
-				isDeletable={true}
+				dishList={dishList}
 				onDeleteDish={onDeleteDish}
 				/>
 			))}
