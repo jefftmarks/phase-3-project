@@ -51,8 +51,6 @@ class ApplicationController < Sinatra::Base
 
 	post "/create_menu/:user_id" do
 
-		binding.pry
-
 		menu = Menu.create(
 			name: params[:name],
 			image_url: params[:image_url],
@@ -61,28 +59,30 @@ class ApplicationController < Sinatra::Base
 			user_id: params[:user_id],
 		)
 
-		params[:courses].each do |course_el|
-			
+		courses = params[:courses].map do |course_el|
 			course = Course.create(
 				category:  course_el[:category],
 				menu: menu
 			)
+		end
 
-			course_el.each do |dish_el|
-
-				Dish.create(
+		params[:courses].each_with_index do |course_el, index|
+			course_el[:dishes].each do |dish_el|
+				dish = Dish.create(
 					name: dish_el[:name],
 					description: dish_el[:description],
 					ingredients: dish_el[:ingredients],
-					course: course
+					course: courses[index]
 				)
-
 			end
-
 		end
 
-		menu.to_json
+		menu.to_json(include: {courses: {include: :dishes}})
+	end
 
+	get "/menus" do
+		menus = Menu.all
+		menus.to_json(include: {courses: {include: :dishes}})
 	end
 
 end
