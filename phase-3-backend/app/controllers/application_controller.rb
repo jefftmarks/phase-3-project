@@ -5,18 +5,18 @@ class ApplicationController < Sinatra::Base
   
   get "/users" do
     users = User.all
-    users.to_json
+    users.to_json(include: :menus)
   end
 
 	# See if a user is already logged on, otherwise return empty array
 	get "/find_active_user" do
 		active_user = User.find_by(is_active: true)
-		active_user.to_json
+		active_user.to_json(include: :menus)
 	end
 
 	get "/find_by_username/:username" do
 		user = User.find_by(username: params[:username])
-		user.to_json
+		user.to_json(include: :menus)
 	end
 
   get "/users/:id" do
@@ -85,11 +85,20 @@ class ApplicationController < Sinatra::Base
 		menus.to_json(include: {courses: {include: :dishes}})
 	end
 
+	get "/menus/:id" do
+		menu = Menu.find(params[:id])
+		menu.to_json(include: {courses: {include: :dishes}})
+	end
+
+	delete "/menus/:id" do
+		menu = Menu.find(params[:id])
+		menu.destroy
+		menu.to_json
+	end
+
 	get "/your_recent_menus/:id" do
 		user = User.find(params[:id])
-
-		menus = user.menus.order(:created_at).limit(6);
-
+		menus = user.menus.order(:created_at).limit(6).to_json
 	end
 
 end

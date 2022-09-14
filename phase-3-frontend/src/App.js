@@ -49,8 +49,8 @@ function App() {
 					path='/edit-user/:username'
 					element={<EditProfileForm activeUser={activeUser} setActiveUser={setActiveUser} />}
 				/>
-        <Route path='/menu/:menu_id' element={<MenuPage />}/>
-        <Route path='/create-menu' element={<MenuForm activeUser={activeUser} />}/>
+        <Route path='/menu/:menu_id' element={<MenuPage activeUser={activeUser} />}/>
+        <Route path='/create-menu' element={<MenuForm activeUser={activeUser} setActiveUser={setActiveUser} />}/>
         <Route path='/edit-menu/:menu_id' element={<MenuForm />}/>
         <Route
 					path='/'

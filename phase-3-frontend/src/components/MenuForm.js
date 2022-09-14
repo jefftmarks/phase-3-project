@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CourseForm from "./CourseForm";
 import { useNavigate } from "react-router-dom";
 
-function MenuForm ({ activeUser }) {
+function MenuForm ({ activeUser, setActiveUser }) {
 	const initialMenu = {name: "", date: "", description: "", image_url: "", courses: []}
 
 	const [menuData, setMenuData] = useState(initialMenu);
@@ -74,7 +74,14 @@ function MenuForm ({ activeUser }) {
 			body: JSON.stringify(updatedMenu),
 		})
 			.then(res => res.json())
-			.then(data => console.log(data))
+			.then((menu) => {
+				const updatedUser = {
+					...activeUser,
+					menus: [...activeUser.menus, menu]
+				}
+				setActiveUser(updatedUser)
+			})
+			.catch(e => console.error(e))
 		resetForms();
 		navigate(`/user/${activeUser.username}`);
 	}

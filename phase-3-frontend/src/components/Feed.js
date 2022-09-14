@@ -13,65 +13,71 @@ function Feed ({ activeUser}) {
 
 	return (
 		<div>
-			{activeUser ? <h1>{activeUser.first_name}'s Feed</h1> : null }
-			  <div class="user-profile-container">
-                <div class="user-image-container">
-                    <img src="http://via.placeholder.com/100x100" />
+			{activeUser ? (
+				<>
+
+
+			<h1>{activeUser.first_name}'s Feed</h1>
+			  <div className="user-profile-container">
+                <div className="user-image-container">
+                    <img src="http://via.placeholder.com/100x100" alt="placeholder" />
                 </div>
-                <div class="user-name-container">
-                    <div class="user-name">{activeUser.first_name}</div>
-                    <div class="user-handle"></div>
+                <div className="user-name-container">
+                    <div className="user-name">{activeUser.first_name}</div>
+                    <div className="user-handle"></div>
                 </div>
 
-                <div class="user-details-container">
-                    <div class="row text-center">
-                        <div class="col-xs-4">
-                            <div class="user-details-title">Tweets</div>
-                            <div class="user-details-count">2</div>
+                <div className="user-details-container">
+                    <div className="row text-center">
+                        <div className="col-xs-4">
+                            <div className="user-details-title">Tweets</div>
+                            <div className="user-details-count">2</div>
                         </div>
-                        <div class="col-xs-4">
-                            <div class="user-details-title">Follows</div>
-                            <div class="user-details-count">12</div>
+                        <div className="col-xs-4">
+                            <div className="user-details-title">Follows</div>
+                            <div className="user-details-count">12</div>
                         </div>
-                        <div class="col-xs-4">
-                            <div class="user-details-title">Followers</div>
-                            <div class="user-details-count">1</div>
+                        <div className="col-xs-4">
+                            <div className="user-details-title">Followers</div>
+                            <div className="user-details-count">1</div>
                         </div>
                     </div>
                 </div>
             </div>
-			  <div class="col-md-6 feed">
+			  <div className="col-md-6 feed">
 
 
-            <div class="create-tweet-container">
+            <div className="create-tweet-container">
                 <form action="">
                     <input type="text" />
-                    <button class="pull-right" type="submit">tweet</button>
+                    <button className="pull-right" type="submit">tweet</button>
                 </form>
             </div>
 			</div>            
-                        <div class="author-image-container">
-                            <img src="http://via.placeholder.com/60x60"/>
+                        <div className="author-image-container">
+                            <img src="http://via.placeholder.com/60x60" alt="placeholder"/>
 
                         </div>
-                        <div class="tweet-creator-data-container">
-                            <div class="author-name">Fred Flinstone</div>
-                            <div class="author-handle">@FredFlinstone</div>
-                            <div class="tweet-timestamp">37m</div>
+                        <div className="tweet-creator-data-container">
+                            <div className="author-name">Fred Flinstone</div>
+                            <div className="author-handle">@FredFlinstone</div>
+                            <div className="tweet-timestamp">37m</div>
                         </div>
-                        <div class="tweet-content">
+                        <div className="tweet-content">
                             <p>Here is a tweet</p>
 
                         </div>
-                        <div class="tweet-publish-data-container">
-                            <div class="replies-container">1</div>
-                            <div class="retweets-container">3</div>
-                            <div class="favorited-container">1</div>
-                            <div class="message-author-container"></div>
+                        <div className="tweet-publish-data-container">
+                            <div className="replies-container">1</div>
+                            <div className="retweets-container">3</div>
+                            <div className="favorited-container">1</div>
+                            <div className="message-author-container"></div>
                         </div>
                  {/*<!--end feed container --> */}
-            </div>
-			
+								 
+				</>
+			) : null}
+		</div>
 	)
 }
 
