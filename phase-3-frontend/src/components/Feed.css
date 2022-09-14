@@ -55,7 +55,7 @@ body {
 
 .create-tweet-container form input {
     border: none;
-    width: 300px;
+    width: 700px;
 }
 
 .feed {
@@ -65,8 +65,8 @@ body {
 }
 
 .feed .tweet-container {
-    background: #fff;
-    border-top: 1px solid #dfdfdf;
+    background: rgb(255, 255, 255);
+    border-top: 1px solid #790a0a;
     padding: 15px;
     margin-bottom: 15px;
 }

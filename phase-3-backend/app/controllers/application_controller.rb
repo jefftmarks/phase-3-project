@@ -23,7 +23,7 @@ class ApplicationController < Sinatra::Base
     user = User.find(params[:id])
     user.to_json(include: :menus)
   end
-
+  
 	patch "/users/:id" do
 		user = User.find(params[:id])
 		user.update(
@@ -50,3 +50,4 @@ class ApplicationController < Sinatra::Base
 	end
 
 end
+
