@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
-function DishForm({ handleUpdateDishes, dishNum, isDeletable, onDeleteDish }) {
+function DishForm({ handleUpdateDishes, dishNum, dishList, onDeleteDish }) {
 	const initialDish = {name: "", description: "", ingredients: "", dishNum: ""};
 	const [dishData, setDishData] = useState(initialDish)
 
@@ -14,7 +14,7 @@ function DishForm({ handleUpdateDishes, dishNum, isDeletable, onDeleteDish }) {
 
 	return (
     <div style={{border: "1px solid black", margin: "10px", paddingLeft: "5px", backgroundColor: "#e6ffeb" }}>
-			<h2>Dish {isDeletable ? (
+			<h2>Dish {dishList.length > 1 ? (
 				<div style={{cursor: "pointer", display: "inline"}}>
 					<RiDeleteBin5Line size="18" onClick={() => onDeleteDish(dishNum)}/>
 				</div>

@@ -49,4 +49,40 @@ class ApplicationController < Sinatra::Base
 		user.to_json
 	end
 
+	post "/create_menu/:user_id" do
+
+		menu = Menu.create(
+			name: params[:name],
+			image_url: params[:image_url],
+			description: params[:description],
+			date: params[:date],
+			user_id: params[:user_id],
+		)
+
+		courses = params[:courses].map do |course_el|
+			course = Course.create(
+				category:  course_el[:category],
+				menu: menu
+			)
+		end
+
+		params[:courses].each_with_index do |course_el, index|
+			course_el[:dishes].each do |dish_el|
+				dish = Dish.create(
+					name: dish_el[:name],
+					description: dish_el[:description],
+					ingredients: dish_el[:ingredients],
+					course: courses[index]
+				)
+			end
+		end
+
+		menu.to_json(include: {courses: {include: :dishes}})
+	end
+
+	get "/menus" do
+		menus = Menu.all
+		menus.to_json(include: {courses: {include: :dishes}})
+	end
+
 end

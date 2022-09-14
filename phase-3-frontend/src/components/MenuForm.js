@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import CourseForm from "./CourseForm";
+import { useNavigate } from "react-router-dom";
 
-function MenuForm () {
+function MenuForm ({ activeUser }) {
 	const initialMenu = {name: "", date: "", description: "", image_url: "", courses: []}
 
 	const [menuData, setMenuData] = useState(initialMenu);
 	const [courses, setCourses] = useState([]);
-	const [courseList, setCourseList] = useState([])
+	const [courseList, setCourseList] = useState([{ courseNum: 1, id: 1 }]);
 
+	const navigate = useNavigate();
 
 	function handleChange(event) {
 		const { name, value } = event.target;
@@ -18,7 +20,9 @@ function MenuForm () {
 	function handleUpdateCourses(courseData) {
 		let updatedCourses;
 
-		if (courses.length === 0 || !courses.find(course => course.courseNum === courseData.courseNum)) {
+		const courseExists = courses.find(course => course.courseNum === courseData.courseNum);
+
+		if (!courseExists) {
 			updatedCourses = [...courses, courseData];
 		} else {
 			updatedCourses = courses.map(course => {
@@ -29,34 +33,59 @@ function MenuForm () {
 				}
 			})
 		}
-	
 		if (courseData.courseNum !== "") {
 			setCourses(updatedCourses);
 		}
 	}
 
 
+	function onDeleteCourse(courseNum){
+		const updatedCourseList = courseList.filter(course => {
+			return course.courseNum !== courseNum;
+		})
+		setCourseList(updatedCourseList);
+
+		const updatedCourses = courses.filter(course => {
+			return course.dishNum !== courseNum;
+		})
+		setCourses(updatedCourses);
+	}
+
+
+	function onAddCourseClick(event){
+		event.preventDefault();
+		const num = courseList.length + 1;
+		const courseObj = {
+			courseNum: num,
+			id: Date.now()
+		};
+		setCourseList(courseList => ([...courseList, courseObj]));
+	}
+
+
 	function handleSubmit(event) {
 		event.preventDefault();
-		const updatedMenu = {...menuData, courses: courses}
-		console.log(updatedMenu);
+		const updatedMenu = {...menuData, courses: courses};
+		fetch(`http://localhost:9292/create_menu/${activeUser.id}`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(updatedMenu),
+		})
+			.then(res => res.json())
+			.then(data => console.log(data))
+		resetForms();
+		navigate(`/user/${activeUser.username}`);
+	}
+
+
+	function resetForms(){
 		setMenuData(initialMenu);
+		setCourses([]);
+		setCourseList([{courseNum: 1, id: Date.now()}]);
 	}
 
-
-	function onAddCourseClick(){
-		const id = courseList.length + 2;
-		console.log(id)
-		setCourseList([
-			...courseList,
-			<CourseForm
-				key={id}
-				handleUpdateCourses={handleUpdateCourses}
-				courseNum={id}
-				isDeletable={true}
-			/>
-		])
-	}
 
 	return (
     <div>
@@ -119,8 +148,15 @@ function MenuForm () {
 
 				<button style={{marginTop: "15px"}} onClick={onAddCourseClick}>Add Course</button>
 
-				<CourseForm handleUpdateCourses={handleUpdateCourses} courseNum="1" />
-				{courseList}
+				{courseList.map(course => (
+				<CourseForm
+					key={course.id}
+					courseNum={course.courseNum}
+					handleUpdateCourses={handleUpdateCourses}
+					courseList={courseList}
+					onDeleteCourse={onDeleteCourse}
+				/>
+			))}
 
 				<input type="submit" value="Submit Menu"/>
 

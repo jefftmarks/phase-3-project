@@ -49,7 +49,7 @@ function App() {
 					element={<EditProfileForm activeUser={activeUser} setActiveUser={setActiveUser} />}
 				/>
         <Route path='/menu/:menu_id' element={<MenuPage />}/>
-        <Route path='/create-menu' element={<MenuForm />}/>
+        <Route path='/create-menu' element={<MenuForm activeUser={activeUser} />}/>
         <Route path='/edit-menu/:menu_id' element={<MenuForm />}/>
         <Route
 					path='/'
