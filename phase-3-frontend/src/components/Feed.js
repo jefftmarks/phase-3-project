@@ -2,6 +2,13 @@ import React from "react";
 import './Feed.css'
 
 function Feed ({ activeUser }) {
+const [formData, setFormData] = useState(initialValues);
+
+
+	function handleChange(event) {
+    const { name, value } = event.target;
+    setFormData((formData) => ({ ...formData, [name]: value }));
+  }
 
 	return (
 		<div>
@@ -12,7 +19,7 @@ function Feed ({ activeUser }) {
                 </div>
                 <div class="user-name-container">
                     <div class="user-name">Fred</div>
-                    <div class="user-handle">@FredFlinstone</div>
+                    <div class="user-handle"></div>
                 </div>
 
                 <div class="user-details-container">
