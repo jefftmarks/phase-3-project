@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import './Feed.css'
 import Card from './Card.js'
-import Carousel from "better-react-carousel";
 
 
 function Feed ({ activeUser}) {
@@ -26,7 +25,7 @@ const [menus, setMenus] = useState([])
 
 
 
-
+//hi
 	return (
     <div className="contain-feed">
       {activeUser ? <h1>{activeUser.first_name}'s Feed</h1> : null}
@@ -48,9 +47,8 @@ const [menus, setMenus] = useState([])
                   Your Feed 
                   <br />
                   <span className="phone">345083737338</span>
-				  <Carousel ></Carousel>
                   {menus.map((menu) => {
-                    return <Card menu={menu} key={menu.id} />;
+                    return <Carousel menu={menu} key={menu.id} />;
                   })}
                 </p>
               </div>
