@@ -13,13 +13,17 @@ function Feed ({ activeUser}) {
 
 	return (
 		<div>
-			{activeUser ? <h1>{activeUser.first_name}'s Feed</h1> : null }
+			{activeUser ? (
+				<>
+
+
+			<h1>{activeUser.first_name}'s Feed</h1>
 			  <div className="user-profile-container">
                 <div className="user-image-container">
                     <img src="http://via.placeholder.com/100x100" alt="placeholder" />
                 </div>
                 <div className="user-name-container">
-                    <div className="user-name">{activeUser ? activeUser.first_name : null}</div>
+                    <div className="user-name">{activeUser.first_name}</div>
                     <div className="user-handle"></div>
                 </div>
 
@@ -70,8 +74,10 @@ function Feed ({ activeUser}) {
                             <div className="message-author-container"></div>
                         </div>
                  {/*<!--end feed container --> */}
-            </div>
-			
+								 
+				</>
+			) : null}
+		</div>
 	)
 }
 
