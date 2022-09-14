@@ -87,7 +87,7 @@ function Login({ setActiveUser, activeUser }) {
                     <span className="login-input-group-text"></span>
                   </div>
                   <div className="login-field">
-                    <i class="fa fa-lock"></i>
+                    <i className="fa fa-lock"></i>
                     <input
                       required
                       type="password"
