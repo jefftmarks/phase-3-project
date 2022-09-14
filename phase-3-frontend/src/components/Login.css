@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: Raleway, sans-serif;
+}
+
+body {
+    background: white
+}
+.login-screen {
+    background: linear-gradient(90deg, #adaac3, #9997b1);
+    position: relative;
+    height: 400px;
+    width: 360px;
+    box-shadow: 0px 0px 24px #5C5696;
+    justify-content: center;
+    align-items: center;
+    left: 30px;
+
+}
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+    position: relative;
+}
+
+.login-header-form {
+    margin-bottom: 15px;
+}
+
+.login-btn {
+    background: #fff;
+        font-size: 14px;
+        margin-top: 40px;
+        border-radius: 26px;
+        border: 1px solid #D4D3E8;
+        text-transform: uppercase;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        width: 70%;
+        color: #4C489D;
+        box-shadow: 0px 2px 2px #5C5696;
+        cursor: pointer;
+        transition: .2s;
+        margin-left: 25px;
+        margin-bottom: 30px;
+        padding: 5px;
+        
+    }
+
+.login__submit:active,
+.login__submit:focus,
+.login__submit:hover {
+    border-color: #6A679E;
+    outline: none;
+}
+
+
+.login-message {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.login-btn i:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.login-icon {
+    position: relative;
+    left: 20px;
+    opacity: 0.5;
+    width: 14px;
+    height: 14px;
+    
+}
+
+.login-field {
+    position: relative;
+    font-family: "Gudea", sans-serif;
+    border: none;
+    border-bottom: 2px solid #D1D1D4;
+    border-radius: 10%;
+     background: none;
+    padding: 20px 6px;
+        font-weight: 700;
+        top: 50px;
+        padding-bottom: 7px;
+    }
+
+.login-align-div {
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+}
+.login-whole {
+    width: 100%;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+
+
+.login-banner-content {
+    left: 50%;
+    align-items: center;
+    position: relative;
+    font-family:"Montserrat", sans-serif;
+    top: 80px;
+}
+
+.title{
+    font-size: x-large
+}
+
+.login__input {
+    position: relative;
+    align-items: center;
+    
+}.signup-link {
+    position: relative;
+   margin-left: 10%;
+}
+
