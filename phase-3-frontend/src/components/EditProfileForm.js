@@ -18,6 +18,11 @@ function EditProfileForm ({ activeUser, setActiveUser }) {
 		fetch(`http://localhost:9292/find_by_username/${params.username}`)
 		.then(res => res.json())
 		.then(user => {
+			if (activeUser) {
+				if (user.id !== activeUser.id) {
+					navigate(`/user/${activeUser.username}`);
+				}
+			}
 			setFormData(user);
 		})
 	},[params])
