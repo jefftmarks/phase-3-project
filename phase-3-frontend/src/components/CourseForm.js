@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DishForm from "./DishForm";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import './CourseForm.css'
 
 function CourseForm({ handleUpdateCourses, courseNum, courseList, onDeleteCourse }) {
 	const initialCourse = {category: "", courseNum: "", dishes: []};
@@ -65,17 +66,17 @@ function CourseForm({ handleUpdateCourses, courseNum, courseList, onDeleteCourse
 	}
 
 	return (
-    <div style={{border: "1px solid black", margin: "10px", paddingLeft: "5px", backgroundColor: "#fff4e6"}}>
+    <div className="course-container">
 			<h2>Course {courseList.length > 1 ? (
-				<button style={{cursor: "pointer"}}>
+				<button >
 					<RiDeleteBin5Line size="18" onClick={() => onDeleteCourse(courseNum)} />
 				</button>
 			): null}</h2>
-
-			<label htmlFor="create-course-category">category:</label>
-			<input
+			<div>
+			<input className="course-input"
 				required
 				id="create-course-category"
+				placeholder="Add a Category"
 				type="text"
 				name="category"
 				value={courseData.category}
@@ -83,6 +84,7 @@ function CourseForm({ handleUpdateCourses, courseNum, courseList, onDeleteCourse
 			/>
 
 			<br />
+			</div>
 
 			<button style={{marginTop: "15px"}} onClick={onAddDishClick}>Add Dish</button>
 

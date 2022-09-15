@@ -1,3 +1,4 @@
+
 .the-menu-container {
     border: solid 1px rgba(0, 0, 0, 0.20);        
     border-top-left-radius: 10px;
@@ -14,9 +15,11 @@
         margin-right: 10%;
         margin-bottom: 30px;
         height: 720px;
-        background-image:'/menu-background.png' ;
+        
+       
 
 }
+
 
 
 * {
@@ -76,4 +79,115 @@ body {
     position: relative;
     display: block;
     left: 30%;
+}
+
+.create-menu-form {
+    font-family: 'Alex Brush', cursive;
+    border: solid 1px rgba(0, 0, 0, 0.20);
+        border-top-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        box-sizing: border-box;
+        position: relative;
+        width: 80%;
+        padding: 30px;
+        margin-top: 20px;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-bottom: 30px;
+        height: 550px;
+    
+}
+
+.form-field {
+    position: relative;
+    border:#321602;
+    border-bottom: 2px solid #080819;
+    border-radius: 10%;
+    background: none;
+    padding: 20px 6px;
+    font-weight: 700;
+    top: 50px;
+    padding-bottom: 7px;
+    font-family: 'Alex Brush', cursive;
+}
+
+.text-area-field {
+    position: relative;
+    border: #321602;
+    border-bottom: 2px solid #080819;
+        border-radius: 10%;
+        background: none;
+        padding: 20px 6px;
+        font-weight: 700;
+        top: 50px;
+        padding-bottom: 7px;
+        font-family: 'Alex Brush', cursive;
+    
+}
+
+
+.menu-form-button {
+    background: transparent;
+    margin-top: 60px;
+    border-radius: 26px;
+    border: 1px solid #D4D3E8;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    width: 70%;
+    color: #373634;
+    box-shadow: 0px 2px 2px #434348;
+    cursor: pointer;
+    transition: .2s;
+    margin-left: 1px;
+    margin-bottom: 30px;
+    padding: 5px;
+    font-family: 'Alex Brush', cursive;
+    position: relative;
+    
+
+}
+
+.menu-form-button:active,
+.menu-form-button:focus,
+.menu-form-button:hover {
+    border-color: #9a4c15;
+    outline: none;
+    cursor: pointer;
+}
+
+.form-padding {
+    padding-bottom: 1px;
+}
+
+.form-menu-submit {
+
+    background: transparent;
+        margin-top: 60px;
+        border-radius: 26px;
+        border: 1px solid #D4D3E8;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        width: 70%;
+        color: #373634;
+        box-shadow: 0px 2px 2px #434348;
+        cursor: pointer;
+        transition: .2s;
+        margin-left: 1px;
+        margin-bottom: 30px;
+        padding: 5px;
+        font-family: 'Alex Brush', cursive;
+        position: relative;
+
+}
+
+.form-menu-submit:active,
+.form-menu-submit:focus,
+.form-menu-submit:hover {
+ border-color: #9a4c15;
+ outline: none;
+ cursor: pointer; 
 }
