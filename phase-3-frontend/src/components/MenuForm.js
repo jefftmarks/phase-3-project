@@ -115,7 +115,7 @@ function MenuForm({ activeUser, setActiveUser }) {
 										</div>
 									</div>
 
-									<form className="create-menu-form"
+									<form className="create-menu-form boxing"
 												onSubmit={handleSubmit} >
 
 									<h2>Menu</h2>
