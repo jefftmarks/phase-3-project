@@ -10,7 +10,7 @@ background: rgb(238, 227, 227);}
 .signup-screen {
     background: linear-gradient(90deg, #adaac3, #9997b1);
     position: relative;
-    height: 500px;
+    height: 580px;
     width: 360px;
     box-shadow: 0px 0px 24px #5C5696;
 
@@ -195,14 +195,14 @@ background: rgb(238, 227, 227);}
 }
 .back-to-login {
     position: relative;
-    bottom: 55px;
+    bottom: 40px;
     left: 30px;
 
 }
 
 .submit-register {
     position: relative;
-    bottom: -20px;
+    bottom: -35px;
     left: 15px;
 
 }
@@ -213,4 +213,12 @@ background: rgb(238, 227, 227);}
     margin-top: 25px;
     position: relative;
     
+}
+
+.tip-text {
+	visibility: hidden;
+}
+
+.tip:hover .tip-text {
+	visibility: visible;
 }

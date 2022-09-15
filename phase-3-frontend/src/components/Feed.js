@@ -26,6 +26,7 @@ function Feed({ activeUser }) {
 
   console.log(menus)
 
+
   return (
     <div>
       {activeUser ? (
