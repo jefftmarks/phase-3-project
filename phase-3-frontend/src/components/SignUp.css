@@ -3,12 +3,10 @@
 * {
     box-sizing: border-box;
     font-family: Raleway, sans-serif;
-    margin: 0;
 }
 
 body {
-background: linear-gradient(90deg, #adaac3, #9997b1);
-}
+background: rgb(238, 227, 227);}
 .signup-screen {
     background: linear-gradient(90deg, #adaac3, #9997b1);
     position: relative;

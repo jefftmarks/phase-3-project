@@ -1,33 +1,66 @@
 import React, { useEffect, useState } from "react";
 import './Feed.css'
+import Card from './Card.js'
+import Carousels from "./Carousels";
 
-function Feed ({ activeUser}) {
-	const [menus, setMenus] = useState([])
+function Feed({ activeUser }) {
+  const [menus, setMenus] = useState([]);
+  //const [formData, setFormData] = useState(initialValues);
+
+  // mapping over menu cards mayve make diff component
+
+  //function handleChange(event) {
+  //  const { name, value } = event.target;
+  //  setFormData((formData) => ({ ...formData, [name]: value }));
+  //}
 
   useEffect(() => {
-		if (activeUser) {
-			setMenus(activeUser.menus)
-		}
-  },[activeUser])
+	if (activeUser) {
+		fetch(`http://localhost:9292/your_recent_menus/${activeUser.id}`)
+  			.then((res) => res.json())
+  			.then((menus) => {
+   			 setMenus(menus);
+		});
+	}
+  }, []);
 
-	// test
+  console.log(menus)
 
-	return (
+
+  return (
     <div>
       {activeUser ? (
         <>
-          <h1>{activeUser.first_name}'s Feed</h1>
-          <h5 className="card-title">{activeUser.first_name}</h5>
-          <p className="card-text">Your Feed</p>
-          <br />
-          <span className="phone">345083737338</span>
-          {/* {menus.map((menu) => {
-            return <Carousels menu={menu} key={menu.id} />;
-          })} */}
+          <div className="feed-clearfix">
+            <div className="feed-row">
+              <div className="feed-col-md-4 animated fadeIn">
+                <div className="feed-card">
+                  <div className="feed-card-body">
+                    <div className="feed-avatar">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/67.jpg"
+                        className="feed-card-img-top"
+                      />
+                    </div>
+                    <h5 className="feed-card-title">{activeUser.first_name}</h5>
+                    <p className="feed-card-text"></p>
+                    <br />
+                    <div className="card-container-div">
+                    {menus.map((menu) => {
+                      return <Card menu={menu} key={menu.id} />;
+                    })}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </>
       ) : null}
     </div>
   );
 }
-
 export default Feed;
+
+
+

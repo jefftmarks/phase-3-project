@@ -1,0 +1,79 @@
+.the-menu-container {
+    border: solid 1px rgba(0, 0, 0, 0.20);        
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+        display: flex;
+        box-sizing: border-box;
+        position: relative;
+        width: 80%;
+        padding: 30px; 
+        margin-top: 20px;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-bottom: 30px;
+        height: 720px;
+        background-image:'/menu-background.png' ;
+
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #f4efeb;
+    font-family: 'Cardo', serif;
+}
+
+#bg {
+    background-image: url('https://drive.google.com/uc?export=view&id=0B5eNVqX2nZE_ZTQwZTQ1WUZhNEk');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    -ms-background-size: cover;
+    background-size: cover;
+    height: 250px;
+    max-width: 1152px;
+}
+
+#logo {
+    max-width: 100%;
+}
+
+.secTitle {
+    font-family: 'Alex Brush', cursive;
+    font-size: 3em;
+    font-weight: 500;
+    color: #321602;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+}
+
+.dishName {
+    font-weight: 600;
+    font-variant: small-caps;
+    font-size: 1.1em;
+}
+
+.dishDesc {
+    font-size: .9em;
+}
+
+.price {
+    text-align: left;
+}
+
+.add {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+    position: relative;
+    display: block;
+    left: 30%;
+}

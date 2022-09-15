@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import './NavBar.css'
 
 
 function NavBar({ activeUser, setActiveUser })  {
@@ -25,7 +26,7 @@ function NavBar({ activeUser, setActiveUser })  {
 	}
 
 	return (
-  	<div style={{border: "1px solid black"}}>
+  	<div className="navbar-div">
       <h2>navbar</h2> 
 			{activeUser ? (
 				<>
