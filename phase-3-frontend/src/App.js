@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar activeUser={activeUser} setActiveUser={setActiveUser} />
+      {activeUser ? <NavBar activeUser={activeUser} setActiveUser={setActiveUser} /> : null}
       <Routes>
         <Route
 					path='/login'
