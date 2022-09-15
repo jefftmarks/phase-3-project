@@ -18,11 +18,9 @@ function Feed({ activeUser }) {
       {activeUser ? (
         <>
 					<div className="feed-container">
-						<div className="card-container">
-						{menus.map((menu) => {
-							return <FeedCard menu={menu} key={menu.id} />;
-						})}
-						</div>
+						{menus.map(menu => (
+							<FeedCard menu={menu} key={menu.id} />
+						))}
 					</div>
         </>
       ) : null}
