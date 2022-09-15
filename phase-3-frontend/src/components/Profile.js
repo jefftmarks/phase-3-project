@@ -33,7 +33,7 @@ function Profile ({ activeUser }) {
 						<Link to={`/edit-user/${profile.username}`}><button>Edit Profile</button></Link>
 					) : null}
 				
-					<h1>{isActiveUser ? "Your Profile" : `${profile.first_name} ${profile.last_name}`}</h1>
+					<h1>{isActiveUser ? "Your Profile |" : null } {`${profile.first_name} ${profile.last_name}`}</h1>
 					<img
 					src={profile.image_url}
 					alt="profile"

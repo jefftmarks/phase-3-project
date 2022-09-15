@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 
 function EditProfileForm ({ activeUser, setActiveUser }) {
@@ -93,6 +93,8 @@ function EditProfileForm ({ activeUser, setActiveUser }) {
 				<br/>
 	
 				<input type="submit" value="submit" />
+				<br/>
+				{activeUser ? <Link to={`/user/${activeUser.username}`}>Back to Profile</Link> : null}
 			</form>
 
     </div>    

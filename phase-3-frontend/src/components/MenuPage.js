@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import { BsSuitHeartFill } from "react-icons/bs";
+import { BsSuitHeart } from "react-icons/bs";
 
 function MenuPage ({ activeUser }) {
 	const [menu, setMenu] = useState({});
 	const [date, setDate] = useState("");
 	const [profile, setProfile] = useState({})
 	const [isActiveUser, setIsActiveUser] = useState(false);
+	const [like, setLike] = useState(false);
 
 	const params = useParams();
 
@@ -24,21 +27,54 @@ function MenuPage ({ activeUser }) {
 				if (activeUser) {
 					if (menu.user_id === activeUser.id) {
 						setIsActiveUser(true)
+					} else {
+						const like = menu.likes.find(like => {
+							return like.user_id === activeUser.id;
+						})
+						setLike(like)
 					}
 				}
 			})
 			.catch(e => console.error(e))
 	}, [params, activeUser])
 
+
 	function handleDeleteMenu() {
 		fetch(`http://localhost:9292/menus/${params.menu_id}`, {
 			method: "DELETE",
 		})
-			.then(res => res.json)
+			.then(res => res.json())
 			.then(() => navigate(`/user/${activeUser.username}`))
 			.catch(e => console.error(e));
 	}
 
+
+	function handleLike() {
+		const newLike = {user_id: activeUser.id, menu_id: menu.id}
+
+		fetch("http://localhost:9292/likes", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(newLike),
+		})
+			.then(res => res.json())
+			.then(newLike => setLike(newLike))
+			.catch(e => console.error(e));
+	}
+
+
+	function handleDislike() {
+		fetch(`http://localhost:9292/likes/${like.id}`, {
+			method: "DELETE",
+		})
+			.then(res => res.json())
+			.then(data => {
+				setLike(false);
+			})
+			.catch(e => console.error(e));
+	}
 
 	return (
 		<div>
@@ -47,6 +83,17 @@ function MenuPage ({ activeUser }) {
 				<div>
 
 					<div style={{border: "1px solid black"}}>
+						{like ? (
+							<button style={{padding: "3px"}} onClick={handleDislike}>
+								Unlike Menu <BsSuitHeartFill style={{marginBottom: "-2px"}}/>
+								</button>
+						) : (
+							<button style={{padding: "3px"}} onClick={handleLike}>
+								Like Menu <BsSuitHeart style={{marginBottom: "-2px"}}/>
+								</button>
+						)}
+						
+						<br />
 						<img src={menu.image_url} alt="menu" style={{height: "200px", width: "auto"}}/>
 						<h1>{menu.name}</h1>
 
@@ -78,7 +125,6 @@ function MenuPage ({ activeUser }) {
 
 					{isActiveUser ? (
 						<>
-							{/* <Link to={`/edit-menu/${menu.id}`}><button>Edit Menu</button></Link> */}
 							<button onClick={handleDeleteMenu}>Delete Menu</button>
 						</>
 					) : null}

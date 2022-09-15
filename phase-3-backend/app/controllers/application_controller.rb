@@ -89,7 +89,7 @@ class ApplicationController < Sinatra::Base
 
 	get "/menus/:id" do
 		menu = Menu.find(params[:id])
-		menu.to_json(include: [:user, {courses: {include: :dishes}}])
+		menu.to_json(include: [:user, :likes, {courses: {include: :dishes}}])
 	end
 
 	delete "/menus/:id" do
@@ -100,6 +100,22 @@ class ApplicationController < Sinatra::Base
 
 	get "/recent_menus" do
 		menus = Menu.all.order(:create_at).limit(20).to_json(include: :user)
+	end
+
+	get "/likes" do
+		likes = Like.all
+		likes.to_json()
+	end
+
+	post "/likes" do
+		like = Like.create(user_id: params[:user_id], menu_id: params[:menu_id])
+		like.to_json
+	end
+
+	delete "/likes/:id" do
+		like = Like.find(params[:id])
+		like.destroy
+		like.to_json
 	end
 
 end
