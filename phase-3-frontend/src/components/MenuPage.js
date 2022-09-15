@@ -4,6 +4,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 function MenuPage ({ activeUser }) {
 	const [menu, setMenu] = useState({});
 	const [date, setDate] = useState("");
+	const [profile, setProfile] = useState({})
 	const [isActiveUser, setIsActiveUser] = useState(false);
 
 	const params = useParams();
@@ -15,8 +16,11 @@ function MenuPage ({ activeUser }) {
 			.then(res => res.json())
 			.then(menu => {
 				setMenu(menu);
+				setProfile(menu.user)
+
 				const date = new Date(menu.date);
 				setDate(date.toDateString());
+
 				if (activeUser) {
 					if (menu.user_id === activeUser.id) {
 						setIsActiveUser(true)
@@ -45,6 +49,15 @@ function MenuPage ({ activeUser }) {
 					<div style={{border: "1px solid black"}}>
 						<img src={menu.image_url} alt="menu" style={{height: "200px", width: "auto"}}/>
 						<h1>{menu.name}</h1>
+
+						{!isActiveUser ? (
+
+							<h3>
+								by <Link to={`/user/${profile.username}`}>{profile.first_name} {profile.last_name}</Link>
+							</h3>
+
+						) : null}
+						
 						<p>{date}</p>
 						<p><em>{menu.description}</em></p>
 

@@ -33,18 +33,20 @@ function Profile ({ activeUser }) {
 						<Link to={`/edit-user/${profile.username}`}><button>Edit Profile</button></Link>
 					) : null}
 				
-					<h1>{profile.first_name}'s Profile</h1>
+					<h1>{isActiveUser ? "Your Profile" : `${profile.first_name} ${profile.last_name}`}</h1>
 					<img
 					src={profile.image_url}
 					alt="profile"
 					style={{height: "200px", width: "auto"}}
 					/>
 
-					<h2>menus:</h2>
+					<h2>{isActiveUser ? "Your Menus" : `${profile.first_name}'s Menus`}</h2>
 
-					{menus.map(menu => (
-						<MenuCard key={menu.id} menu={menu} />
-					))}
+					<div>
+						{menus.map(menu => (
+							<MenuCard key={menu.id} menu={menu} />
+						))}
+					</div>
 
 				</>
 
