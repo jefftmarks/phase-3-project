@@ -1,19 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
-* {
-    box-sizing: border-box;
-    font-family: Raleway, sans-serif;
-}
+
 
 body {
-background: rgb(238, 227, 227);}
-.signup-screen {
-    background: linear-gradient(90deg, #adaac3, #9997b1);
-    position: relative;
-    height: 580px;
-    width: 360px;
-    box-shadow: 0px 0px 24px #5C5696;
-
+    background: rgb(238, 227, 227);}
+    .signup-screen {
+        background: linear-gradient(90deg, #adaac3, #9997b1);
+        position: relative;
+        height: 580px;
+        width: 360px;
+        box-shadow: 0px 0px 24px #5C5696;
+        box-sizing: border-box;
+        font-family: Raleway, sans-serif;
+        
     
 }
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import './DishForm.css'
 
 function DishForm({ handleUpdateDishes, dishNum, dishList, onDeleteDish }) {
 	const initialDish = {name: "", description: "", ingredients: "", dishNum: ""};
@@ -13,22 +14,24 @@ function DishForm({ handleUpdateDishes, dishNum, dishList, onDeleteDish }) {
 	}
 
 	return (
-    <div style={{border: "1px solid black", margin: "10px", paddingLeft: "5px", backgroundColor: "#e6ffeb" }}>
+    <div className="dish-container">
 			<h2>Dish {dishList.length > 1 ? (
 				<div style={{cursor: "pointer", display: "inline"}}>
 					<RiDeleteBin5Line size="18" onClick={() => onDeleteDish(dishNum)}/>
 				</div>
 			): null}</h2>
 
-				<label htmlFor="create-dish-name">dish name:</label>
-				<input
+				<div>
+				<input className="dish-input" 
 					required
 					id="create-dish-name"
+					placeholder="Dish name goes here"
 					type="text"
 					name="name"
 					value={dishData.name}
 					onChange={handleChange}
 				/>
+				</div>
 
 				<br />
 
