@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_13_155954) do
+ActiveRecord::Schema.define(version: 2022_09_15_011239) do
 
   create_table "courses", force: :cascade do |t|
     t.string "category"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2022_09_13_155954) do
     t.string "name"
     t.string "image_url"
     t.string "description"
-    t.datetime "date"
+    t.string "date"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2022_09_13_155954) do
     t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
   end
 
 end

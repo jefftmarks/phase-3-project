@@ -30,6 +30,7 @@ class ApplicationController < Sinatra::Base
 			first_name: params[:first_name],
 			last_name: params[:last_name],
 			username: params[:username],
+			email: params[:email],
 			password: params[:password],
 			image_url: params[:image_url],
 			is_active: params[:is_active]
@@ -42,6 +43,7 @@ class ApplicationController < Sinatra::Base
 			first_name: params[:first_name],
 			last_name: params[:last_name],
 			username: params[:username],
+			email: params[:email],
 			password: params[:password],
 			image_url: params[:image_url],
 			is_active: true

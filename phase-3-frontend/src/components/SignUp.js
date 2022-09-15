@@ -10,6 +10,7 @@ function SignUp ({ activeUser, setActiveUser }) {
 		username: "",
 		password: "",
 		image_url: "",
+		email: "",
 	};
 
 	const [formData, setFormData] = useState(initialValues);
@@ -93,6 +94,8 @@ function SignUp ({ activeUser, setActiveUser }) {
                       className="signup__input"
                       name="email"
                       placeholder="Email"
+											value={formData.email}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="signup__field">
