@@ -7,7 +7,7 @@ Menu.destroy_all
 Course.destroy_all
 Like.destroy_all
 
-5.times do |i|
+10.times do |i|
 	User.create(
 		first_name: Faker::Name.first_name,
 		last_name: Faker::Name.last_name,
@@ -30,36 +30,37 @@ food_pics = [
 	"https://cdn.vox-cdn.com/thumbor/BOjkSSj52l0dmRK_zjoz_ORgW7g=/0x0:1728x2160/1200x900/filters:focal(726x942:1002x1218)/cdn.vox-cdn.com/uploads/chorus_image/image/59365469/af_fatg_2.22_7.66.jpeg"
 ]
 
-10.times do |i|
+20.times do |i|
+
+	dishes = []
+
+	rand(1..10).times do |i|
+		dishes << Dish.create(
+			name: Faker::Food.dish,
+			description: Faker::Lorem.sentence(word_count: 5),
+			ingredients: "#{Faker::Food.ingredient}, #{Faker::Food.measurement}"
+		)
+	end
+
+	courses = []
+
+	rand(1..5).times do |i|
+		courses << Course.create(
+			category: ["Appetizer", "Starter", "Entree", "Main", "Side", "Dessert"].sample,
+			dishes: dishes.sample(rand(1..2))
+		)
+	end
+
+
 	Menu.create(
 		name: ["Halloween", "Christmas", "Birthday", "Thanksgiving", "Family", "Harry Potter Themed"].sample + " " + ["Breakfast", "Lunch", "Dinner", "Brunch", "Snack", "Feast", "BBQ"].sample,
 		image_url: food_pics.sample,
 		description: Faker::Lorem.sentence(word_count: 10),
-		date: Faker::Date.in_date_period,
-		user_id: User.all.sample.id
+		date: Faker::Date.backward(days: 365),
+		user_id: User.all.sample.id,
+		courses: courses.sample(rand(1..2))
 	)
 end
 
-20.times do |i|
-	Course.create(
-		category: ["Appetizer", "Entree", "Main", "Side", "Dessert"].sample,
-		menu_id: Menu.all.sample.id,
-	)
-end
-
-20.times do |i|
-	Dish.create(
-		name: Faker::Food.dish,
-		description: Faker::Food.ethnic_category,
-		course_id: Course.all.sample.id,
-	)
-end
-
-40.times do |i|
-	Ingredient.create(
-		description: "#{Faker::Food.ingredient}, #{Faker::Food.measurement}",
-		dish_id: Dish.all.sample.id
-	)
-end
 
 puts "✅ Done seeding!"
