@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import MenuCard from "./MenuCard";
+import "./Profile.css"
 
 
 function Profile ({ activeUser }) {
@@ -25,15 +26,15 @@ function Profile ({ activeUser }) {
 	},[activeUser, params])
 
 	return ( 
-    <div>
+    <div className="profile-container">
 			{profile ? (
 
 				<>
-					{isActiveUser ? (
-						<Link to={`/edit-user/${profile.username}`}><button>Edit Profile</button></Link>
-					) : null}
-				
 					<h1>{isActiveUser ? "Your Profile |" : null } {`${profile.first_name} ${profile.last_name}`}</h1>
+					{isActiveUser ? (
+						<Link to={`/edit-user/${profile.username}`}><button className="edit-button">Edit Profile</button></Link>
+					) : null}
+					<br/>
 					<img
 					src={profile.image_url}
 					alt="profile"

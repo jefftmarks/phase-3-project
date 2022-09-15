@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './Card.css'
+import './FeedCard.css'
 
 
 function FeedCard({ menu }) {
@@ -10,7 +10,7 @@ function FeedCard({ menu }) {
 
 
     return (
-        <div className="menu-images">
+        <div className="menu-card">
 						<p>{formattedDate.toDateString()}</p>
             <Link to={`/menu/${id}`}><img className="menu-image" src={image_url} alt="menu"/></Link>
 						<p>{user.first_name}'s {name}</p>
