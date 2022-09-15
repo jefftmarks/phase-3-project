@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import './Card.css'
 
 
-function Card({ menu }) {
-    const {image_url, name, description, date, id, user} = menu
+function FeedCard({ menu }) {
+    const {image_url, name, date, id, user} = menu
 
 		const formattedDate = new Date(date);
 
@@ -19,4 +19,4 @@ function Card({ menu }) {
     )
 }
 
-export default Card
+export default FeedCard

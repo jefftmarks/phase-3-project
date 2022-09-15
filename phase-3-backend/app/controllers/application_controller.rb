@@ -89,18 +89,13 @@ class ApplicationController < Sinatra::Base
 
 	get "/menus/:id" do
 		menu = Menu.find(params[:id])
-		menu.to_json(include: {courses: {include: :dishes}})
+		menu.to_json(include: [:user, {courses: {include: :dishes}}])
 	end
 
 	delete "/menus/:id" do
 		menu = Menu.find(params[:id])
 		menu.destroy
 		menu.to_json
-	end
-
-	get "/your_recent_menus/:id" do
-		user = User.find(params[:id])
-		menus = user.menus.order(:created_at).limit(6).to_json
 	end
 
 	get "/recent_menus" do
