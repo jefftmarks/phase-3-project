@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import "./EditProfileForm.css"
 
 
 function EditProfileForm ({ activeUser, setActiveUser }) {
@@ -51,14 +52,15 @@ function EditProfileForm ({ activeUser, setActiveUser }) {
 	}
 
 	return ( 
-    <div style={{border: "1px solid black"}}>
+    <div className="edit-container">
         <h1>Edit Profile</h1>
 
 				<form onSubmit={handleSubmit}>
 
-				<label htmlFor="edit-firstname">first name:</label>
+				<div className="label">first name:</div>
 				<input
 					required
+					className="field"
 					id="edit-firstname"
 					type="text"
 					name="first_name"
@@ -68,9 +70,10 @@ function EditProfileForm ({ activeUser, setActiveUser }) {
 
 				<br />
 
-				<label htmlFor="edit-lastname">last name:</label>
+				<div className="label">last name:</div>
 				<input
 					required
+					className="field"
 					id="edit-lastname"
 					type="text"
 					name="last_name"
@@ -80,9 +83,10 @@ function EditProfileForm ({ activeUser, setActiveUser }) {
 
 				<br />
 
-				<label htmlFor="edit-image-url">profile image:</label>
+				<div className="label">profile image:</div>
 				<input
 					required
+					className="field"
 					id="edit-image-url"
 					type="image-url"
 					name="image_url"
@@ -92,7 +96,7 @@ function EditProfileForm ({ activeUser, setActiveUser }) {
 
 				<br/>
 	
-				<input type="submit" value="submit" />
+				<input className="submit-button" type="submit" value="submit" />
 				<br/>
 				{activeUser ? <Link to={`/user/${activeUser.username}`}>Back to Profile</Link> : null}
 			</form>

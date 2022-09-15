@@ -17,25 +17,13 @@ function Feed({ activeUser }) {
     <div>
       {activeUser ? (
         <>
-          <div className="feed-clearfix">
-            <div className="feed-row">
-              <div className="feed-col-md-4 animated fadeIn">
-                <div className="feed-card">
-                  <div className="feed-card-body">
-                    <div className="feed-avatar">
-                    </div>
-                    <h5 className="feed-card-title">Menu Feed</h5>
-                    <br />
-                    <div className="card-container-div">
-                    {menus.map((menu) => {
-                      return <FeedCard menu={menu} key={menu.id} />;
-                    })}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+					<div className="feed-container">
+						<div className="card-container">
+						{menus.map((menu) => {
+							return <FeedCard menu={menu} key={menu.id} />;
+						})}
+						</div>
+					</div>
         </>
       ) : null}
     </div>
