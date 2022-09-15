@@ -7,7 +7,6 @@ import SignUp from './components/SignUp';
 import MenuPage from './components/MenuPage';
 import MenuForm from './components/MenuForm';
 import EditProfileForm from './components/EditProfileForm';
-import EditMenuForm from "./components/EditMenuForm";
 import { Route, Routes, useNavigate } from 'react-router-dom'
 
 function App() {
@@ -57,10 +56,6 @@ function App() {
         <Route
 					path='/create-menu'
 					element={<MenuForm activeUser={activeUser} setActiveUser={setActiveUser} />}
-				/>
-        <Route
-					path='/edit-menu/:menu_id'
-					element={<EditMenuForm activeUser={activeUser} setActiveUser={setActiveUser} />}
 				/>
         <Route
 					path='/'

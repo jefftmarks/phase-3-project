@@ -15,16 +15,11 @@ function Feed({ activeUser }) {
   //}
 
   useEffect(() => {
-	if (activeUser) {
-		fetch(`http://localhost:9292/your_recent_menus/${activeUser.id}`)
+		fetch("http://localhost:9292/recent_menus")
   			.then((res) => res.json())
-  			.then((menus) => {
-   			 setMenus(menus);
-		});
-	}
+  			.then(menus => setMenus(menus))
+				.catch(e => console.error(e));
   }, []);
-
-  console.log(menus)
 
 
   return (
@@ -37,13 +32,8 @@ function Feed({ activeUser }) {
                 <div className="feed-card">
                   <div className="feed-card-body">
                     <div className="feed-avatar">
-                      <img
-                        src="https://randomuser.me/api/portraits/men/67.jpg"
-                        className="feed-card-img-top"
-                      />
                     </div>
-                    <h5 className="feed-card-title">{activeUser.first_name}</h5>
-                    <p className="feed-card-text"></p>
+                    <h5 className="feed-card-title">Menu Feed</h5>
                     <br />
                     <div className="card-container-div">
                     {menus.map((menu) => {

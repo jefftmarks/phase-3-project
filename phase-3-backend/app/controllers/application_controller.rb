@@ -103,8 +103,8 @@ class ApplicationController < Sinatra::Base
 		menus = user.menus.order(:created_at).limit(6).to_json
 	end
 
-	get "courses/:id" do
-		
+	get "/recent_menus" do
+		menus = Menu.all.order(:create_at).limit(20).to_json(include: :user)
 	end
 
 end

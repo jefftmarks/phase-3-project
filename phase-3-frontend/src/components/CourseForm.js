@@ -24,12 +24,12 @@ function CourseForm({ handleUpdateCourses, courseNum, courseList, onDeleteCourse
 	function handleUpdateDishes(dishData) {
 		let updatedDishes;
 
-		const dishExists = dishes.find(dish => dish.dishNum === dishData.dishNum);
+		const dishExists = dishList.find(dish => dish.dishNum === dishData.dishNum);
 
 		if (!dishExists) {
-			updatedDishes = [...dishes, dishData];
+			updatedDishes = [...dishList, dishData];
 		} else {
-			updatedDishes = dishes.map(dish => {
+			updatedDishes = dishList.map(dish => {
 				if (dish.dishNum === dishData.dishNum) {
 					return dishData;
 				} else {
@@ -37,7 +37,7 @@ function CourseForm({ handleUpdateCourses, courseNum, courseList, onDeleteCourse
 				}
 			})
 		}
-		setDishes(updatedDishes);
+		setDishList(updatedDishes);
 	}
 	
 
