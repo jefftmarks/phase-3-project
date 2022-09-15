@@ -1,0 +1,24 @@
+.menu-images{
+    border: solid 6px transparent;
+    border-radius: 20%;
+    width: 140px;
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    
+    
+
+}
+
+.menu-image{
+    border: solid 6px transparent;
+        border-radius: 20%;
+        width: 140px;
+        display: inline-block;
+        box-sizing: border-box;
+        position: relative;
+}
+
+.menu-image:hover{
+    box-shadow: 0 0 12px 3px;
+}

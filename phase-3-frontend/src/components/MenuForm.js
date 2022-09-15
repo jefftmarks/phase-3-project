@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CourseForm from "./CourseForm";
 import { useNavigate } from "react-router-dom";
+import './MenuForm.css'
 
 function MenuForm ({ activeUser, setActiveUser }) {
 	const initialMenu = {name: "", date: "", description: "", image_url: "", courses: []}
@@ -91,85 +92,167 @@ function MenuForm ({ activeUser, setActiveUser }) {
 		setMenuData(initialMenu);
 		setCourses([]);
 		setCourseList([{courseNum: 1, id: Date.now()}]);
-	}
-
+	} 
 
 	return (
-    <div>
-			<h1>Create Your Menu</h1>
-			<form
-				className="create-menu-form"
-				onSubmit={handleSubmit}
-				style={{border: "1px solid black", paddingLeft: "5px", backgroundColor: "#f9e6ff"}}
-			>
+	
+	<div className="the-menu-container">
+  <div className="row" id="bg">
+    <div className="col-md-12">
+    </div>
+  </div>
 
-				<h2>Menu</h2>
+  <div className="row">
+    <div className="col-md-6">
 
-				<label htmlFor="create-menu-name">name:</label>
-				<input
-					required
-					id="create-menu-name"
-					type="text"
-					name="name"
-					placeholder="Menu Title"
-					value={menuData.name}
-					onChange={handleChange}
-				/>
+      <div className="table-flexible">
+        <table className="table borderless">
+          <tbody>
+            <tr>
+              <td colspan="3" className="text-center">
+                <span className="secTitle">Create Your Menu</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span className="dishName">Assiette de fruitset fondue de brie</span><br/>
+                <span className="dishDesc">Wedge of baked Brie with ripe melon and berries</span></td>
+    
+            </tr>
+            <tr>
+              <td>
+                <span className="dishName">Chausson du fromage de ch&egrave;vre</span><br/>
+                <span className="dishDesc">Goat cheese tart</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span className="dishName">Palourdes au gratin</span><br/>
+                <span className="discDesc">Baked clams with garlic butter and bread crumbs</span>
+              </td>
+            </tr>
 
-				<br />
+            <tr>
+              <td colspan="3" className="text-center">
+                <span className="secTitle">Entr&eacute;es</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span className="dishName">Poulet &aacute; la moutard et au miel</span>
+                </td>
+               
 
-				<label htmlFor="create-menu-date">date of meal:</label>
-				<input
-					required
-					id="create-menu-date"
-					type="date"
-					name="date"
-					value={menuData.date}
-					onChange={handleChange}
-				/>
+            </tr>
+            <tr>
+              <td>
+                <span className="dishName">Champignon parmentier au gratin</span><br/>
+                <span className="dishDesc">Braised portobello mushrooms, topped with mashed potatoes and Gruy&egrave;re</span>
+              </td>
+            
+            </tr>
+            <tr>
+              <td>
+                <span className="dishName">Porc &aacute; la dijonnaise</span><br/>
+                <span className="dishDesc">Sauteacuteed pork medallions with an orange compare sauce</span>
+              </td>
+    
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-				<br />
-
-				<label htmlFor="create-menu-image">image url:</label>
-				<input
-					required
-					id="create-menu-image"
-					type="text"
-					name="image_url"
-					value={menuData.image_url}
-					onChange={handleChange}
-				/>
-
-				<br />
-
-				<label htmlFor="create-menu-description">description:</label><br/>
-				<textarea
-					required
-					id="create-menu-description"
-					name="description"
-					value={menuData.description}
-					onChange={handleChange}
-				></textarea>
-
-				<br />
-
-				<button style={{marginTop: "15px"}} onClick={onAddCourseClick}>Add Course</button>
-
-				{courseList.map(course => (
-				<CourseForm
-					key={course.id}
-					courseNum={course.courseNum}
-					handleUpdateCourses={handleUpdateCourses}
-					courseList={courseList}
-					onDeleteCourse={onDeleteCourse}
-				/>
-			))}
-
-				<input type="submit" value="Submit Menu"/>
-
-			</form>
-		</div>
+    <div className="col-md-6"> 
+	</div>
+	</div>
+	</div>
 	)
-}
+	}
+      
+
+		
+	{/* )
+
+
+// 	{return (
+// 		<div classNameName="the-menu-container">
+
+//     <div classNameName="create-menu-container">
+// 			<h1>Create Your Menu</h1>
+// 			<form
+// 				classNameName="create-menu-form"
+// 				onSubmit={handleSubmit}
+// 			>
+
+// 				<h2>Menu</h2>
+
+// 				<label htmlFor="create-menu-name">name:</label>
+// 				<input
+// 					required
+// 					id="create-menu-name"
+// 					type="text"
+// 					name="name"
+// 					placeholder="Menu Title"
+// 					value={menuData.name}
+// 					onChange={handleChange}
+// 				/>
+
+// 				<br />
+
+// 				<label htmlFor="create-menu-date">date of meal:</label>
+// 				<input
+// 					required
+// 					id="create-menu-date"
+// 					type="date"
+// 					name="date"
+// 					value={menuData.date}
+// 					onChange={handleChange}
+// 				/>
+
+// 				<br />
+
+// 				<label htmlFor="create-menu-image">image url:</label>
+// 				<input
+// 					required
+// 					id="create-menu-image"
+// 					type="text"
+// 					name="image_url"
+// 					value={menuData.image_url}
+// 					onChange={handleChange}
+// 				/>
+
+// 				<br />
+
+// 				<label htmlFor="create-menu-description">description:</label><br/>
+// 				<textarea
+// 					required
+// 					id="create-menu-description"
+// 					name="description"
+// 					value={menuData.description}
+// 					onChange={handleChange}
+// 				></textarea>
+
+// 				<br />
+
+// 				<button style={{marginTop: "15px"}} onClick={onAddCourseClick}>Add Course</button>
+
+// 				{courseList.map(course => (
+// 				<CourseForm
+// 					key={course.id}
+// 					courseNum={course.courseNum}
+// 					handleUpdateCourses={handleUpdateCourses}
+// 					courseList={courseList}
+// 					onDeleteCourse={onDeleteCourse}
+// 				/>
+// 			))}
+
+// 				<input type="submit" value="Submit Menu"/>
+
+// 			</form>
+// 		</div>
+// 		</div>
+// 	)
+// } */}
 
 export default MenuForm;
