@@ -11,6 +11,8 @@ function Profile ({ activeUser }) {
 	
 	const params = useParams();
 
+	console.log(profile)
+
 	useEffect(() => {
 		fetch(`http://localhost:9292/find_by_username/${params.username}`)
 			.then(res => res.json())
