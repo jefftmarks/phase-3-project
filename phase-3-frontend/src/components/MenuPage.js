@@ -5,8 +5,8 @@ import { BsSuitHeart } from "react-icons/bs";
 import './MenuPage.css'
 
 function MenuPage ({ activeUser }) {
-	const [menu, setMenu] = useState({});
-	const [date, setDate] = useState("");
+	const [menu, setMenu] = useState(null);
+	// const [date, setDate] = useState("");
 	const [profile, setProfile] = useState({})
 	const [isActiveUser, setIsActiveUser] = useState(false);
 	const [like, setLike] = useState(false);
@@ -15,15 +15,20 @@ function MenuPage ({ activeUser }) {
 
 	const navigate = useNavigate();
 
+	let publishedDate;
+	let platedDate;
+
+	if (menu) {
+		publishedDate = new Date(menu.created_at);
+		platedDate = new Date(menu.date);
+	}
+
 	useEffect(() => {
 		fetch(`http://localhost:9292/menus/${params.menu_id}`)
 			.then(res => res.json())
 			.then(menu => {
 				setMenu(menu);
 				setProfile(menu.user)
-
-				const date = new Date(menu.date);
-				setDate(date.toDateString());
 
 				if (activeUser) {
 					if (menu.user_id === activeUser.id) {
@@ -79,7 +84,7 @@ function MenuPage ({ activeUser }) {
 
 	return (
 		<div>
-			{menu && date ? (
+			{menu ? (
 
 				<div>
 
@@ -106,7 +111,7 @@ function MenuPage ({ activeUser }) {
 
 						) : null}
 						
-						<p>{date}</p>
+						<p>Plated on {platedDate.toDateString()}</p>
 						<p><em>{menu.description}</em></p>
 
 						{menu.courses.map(course => (
@@ -122,6 +127,7 @@ function MenuPage ({ activeUser }) {
 								))}
 							</div>
 						))}
+						<p className="published">Published {publishedDate.toDateString()}</p>
 					</div>
 
 					{isActiveUser ? (

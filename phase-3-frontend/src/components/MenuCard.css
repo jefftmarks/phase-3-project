@@ -27,7 +27,7 @@
 }
 
 .menu-card-image:hover {
-    box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 12px 3px;
 }
 
 .like-card-image {
@@ -37,9 +37,9 @@
         position: relative;
     }
 
-.like-card-image:hover {
-box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.08);
-}
+    .like-card-image:hover {
+    box-shadow: 0 0 12px 3px;
+    }
 
 .liked-menus {
     display: inline-flex;

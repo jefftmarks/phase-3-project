@@ -5,21 +5,24 @@ import './MenuCard.css'
 
 function MenuCard({ menu, tag }) {
 
-	const formattedDate = new Date(menu.date);
-
-	
+	const publishedDate = new Date(menu.date);
 
 	return (
 		<>
 		<div className={`${tag}-images`}>
-			<h4 className={`${tag}-captions`}>{`${menu.name} | ${formattedDate.toDateString()} `}</h4>
 			<Link to={`/menu/${menu.id}`}>
-				<img 
-					src={menu.image_url}
-					alt="menu"
-					className={`${tag}-card-image`}
-					style={{height: "200px", width: "auto"}}
-				/>
+				<fig>
+					<img 
+						src={menu.image_url}
+						alt="menu"
+						className={`${tag}-card-image`}
+						style={{height: "200px", width: "auto"}}
+					/>
+					<figcaption className={`${tag}-captions`}>
+						{/* {`${menu.name}Published ${publishedDate.toDateString()} `} */}
+						{menu.name}
+					</figcaption>
+				</fig>
 			</Link>
 		</div>
 		
