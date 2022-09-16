@@ -80,11 +80,11 @@ function CourseForm({ handleUpdateCourses, courseNum, courseList, onDeleteCourse
 					value={courseData.category}
 					onChange={handleChange}
 				>
-					<option disabled value="">Please Choose</option>
+					<option disabled value="">Course Type</option>
 					<option value="Appetizer">"Appetizer"</option>
 					<option value="Starter">"Starter"</option>
 					<option value="Side">"Side"</option>
-					<option value="Maine">"Main"</option>
+					<option value="Main">"Main"</option>
 					<option value="Entree">"Entree"</option>
 					<option value="Dessert">"Dessert"</option>
 				</select>

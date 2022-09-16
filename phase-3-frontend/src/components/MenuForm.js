@@ -17,7 +17,6 @@ function MenuForm({ activeUser, setActiveUser }) {
 		setMenuData(menuData => ({ ...menuData, [name]: value }))
 	}
 
-
 	function handleUpdateCourses(courseData) {
 		let updatedCourses;
 
@@ -66,7 +65,11 @@ function MenuForm({ activeUser, setActiveUser }) {
 
 	function handleSubmit(event) {
 		event.preventDefault();
+
 		const updatedMenu = { ...menuData, courses: courses };
+
+		console.log(updatedMenu)
+
 		fetch(`http://localhost:9292/create_menu/${activeUser.id}`, {
 			method: "POST",
 			headers: {
@@ -76,11 +79,12 @@ function MenuForm({ activeUser, setActiveUser }) {
 		})
 			.then(res => res.json())
 			.then((menu) => {
-				const updatedUser = {
-					...activeUser,
-					menus: [...activeUser.menus, menu]
-				}
-				setActiveUser(updatedUser)
+				console.log(menu)
+				// const updatedUser = {
+				// 	...activeUser,
+				// 	menus: [...activeUser.menus, menu]
+				// }
+				// setActiveUser(updatedUser)
 			})
 			.catch(e => console.error(e))
 		resetForms();
