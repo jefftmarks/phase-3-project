@@ -28,7 +28,7 @@ food_pics = [
 
 events = ["Halloween", "Christmas", "Birthday", "Wallet Friendly", "Bougie", "Thanksgiving", "Family", "#{Faker::Movie.title}-Themed", "Easter", "Corporate", "Super Special", "Quick and Easy" "#{Faker::Commerce.vendor}-Sponsored", "Valentine's Day", "#{Faker::Address.state}"]
 
-event_types = ["Breakfast", "Charcuterie Board", "Lunch", "Dinner", "Wine Tasting", "Hot Dog Eating Contest", "Buffet", "Potluck" "Brunch", "Snack", "Feast", "BBQ", "Party", "Picnic"]
+event_types = ["Breakfast", "Charcuterie Board", "Lunch", "Dinner", "Wine Tasting", "Hot Dog Eating Contest", "Buffet", "Potluck", "Brunch", "Snack", "Feast", "BBQ", "Party", "Picnic"]
 
 
 10.times do |i|
