@@ -118,7 +118,8 @@ function MenuForm({ activeUser, setActiveUser }) {
 									<form className="create-menu-form boxing"
 												onSubmit={handleSubmit} >
 
-									<h2>Menu</h2>
+									<h2 className="menu-title">Menu</h2>
+									<div className="align-inputs">
 
 									<div className="form-padding">
 									<input className="form-field"
@@ -167,9 +168,11 @@ function MenuForm({ activeUser, setActiveUser }) {
 										onChange={handleChange}
 									></textarea>
 
-									<br />
-
 									<button className="menu-form-button" onClick={onAddCourseClick}>Add Course</button>
+									<br />
+									<input className="form-menu-submit" type="submit" value="Submit Menu" />
+									</div>
+
 
 									{courseList.map(course => (
 										<CourseForm className="course-child"
@@ -181,7 +184,6 @@ function MenuForm({ activeUser, setActiveUser }) {
 										/>
 									))}
 
-									<input className="form-menu-submit" type="submit" value="Submit Menu" />
 								</form>
 					
 							</div>

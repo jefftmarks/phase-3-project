@@ -20,8 +20,9 @@ function DishForm({ handleUpdateDishes, dishNum, dishList, onDeleteDish }) {
 					<RiDeleteBin5Line size="18" onClick={() => onDeleteDish(dishNum)}/>
 				</div>
 			): null}</h2>
+			<div className="dish-item-container">
 
-				<div>
+				<div className="dish-items">
 				<input className="dish-input" 
 					required
 					id="create-dish-name"
@@ -35,10 +36,10 @@ function DishForm({ handleUpdateDishes, dishNum, dishList, onDeleteDish }) {
 
 				<br />
 
-				<label htmlFor="create-dish-description">dish description:</label><br/>
-				<textarea
+				<textarea className="describe-dish"
 					required
-					id="create-dish-description"
+					id="dish-textbox"
+					placeholder="Describe your dish"
 					name="description"
 					value={dishData.description}
 					onChange={handleChange}
@@ -46,14 +47,15 @@ function DishForm({ handleUpdateDishes, dishNum, dishList, onDeleteDish }) {
 
 				<br />
 
-				<label htmlFor="create-dish-ingredients">ingredients:</label><br/>
-				<textarea
+				<textarea className="describe-dish"
 					required
-					id="create-dish-ingredients"
+					placeholder="List your Ingredients"
+					id="dish-textbox"
 					name="ingredients"
 					value={dishData.ingredients}
 					onChange={handleChange}
 				></textarea>
+				</div>
 		</div>
 	)
 }

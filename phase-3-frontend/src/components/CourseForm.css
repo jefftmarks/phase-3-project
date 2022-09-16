@@ -8,6 +8,7 @@
         padding: 30px;
         height: auto;
         width: 200px;
+        margin-left: 25px;
 
 
 }
@@ -24,6 +25,38 @@
         font-family: 'Alex Brush', cursive;
         position: relative;
         
+}
+
+
+.add-dish-button {
+        background: transparent;
+                margin-top: 60px;
+                border-radius: 26px;
+                border: 1px solid #D4D3E8;
+                font-weight: 700;
+                align-items: center;
+                width: 70%;
+                color: #373634;
+                box-shadow: 0px 2px 2px #434348;
+                cursor: pointer;
+                transition: .2s;
+                margin-left: 1px;
+                margin-bottom: 40px;
+                padding: 5px;
+                font-family: 'Alex Brush', cursive;
+                position: relative;
+                left: 1px;
+                bottom: 40px;
+                justify-content: center;
+
+}
+
+.add-dish-button:active,
+.add-dish-button:focus,
+.add-dish-button:hover {
+        border-color: #9a4c15;
+        outline: none;
+        cursor: pointer;
 }
 
 
