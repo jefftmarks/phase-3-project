@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { BsSuitHeartFill } from "react-icons/bs";
 import { BsSuitHeart } from "react-icons/bs";
+import './MenuPage.css'
 
 function MenuPage ({ activeUser }) {
 	const [menu, setMenu] = useState({});
@@ -82,10 +83,10 @@ function MenuPage ({ activeUser }) {
 
 				<div>
 
-					<div style={{border: "1px solid black"}}>
+					<div className="menu-page-container-div">
 						{like ? (
-							<button style={{padding: "3px"}} onClick={handleDislike}>
-								Unlike Menu <BsSuitHeartFill style={{marginBottom: "-2px"}}/>
+							<button className="like-button" style={{padding: "3px"}} onClick={handleDislike}>
+								Unlike Menu <BsSuitHeartFill style={{marginBottom: "-2px", color:"red" }}/>
 								</button>
 						) : (
 							<button style={{padding: "3px"}} onClick={handleLike}>
@@ -94,8 +95,8 @@ function MenuPage ({ activeUser }) {
 						)}
 						
 						<br />
-						<img src={menu.image_url} alt="menu" style={{height: "200px", width: "auto"}}/>
-						<h1>{menu.name}</h1>
+						<img className="menu-page-img" src={menu.image_url} alt="menu" style={{height: "200px", width: "auto"}}/>
+						<h1 className="menu-page-title">{menu.name}</h1>
 
 						{!isActiveUser ? (
 
@@ -109,7 +110,7 @@ function MenuPage ({ activeUser }) {
 						<p><em>{menu.description}</em></p>
 
 						{menu.courses.map(course => (
-							<div style={{border: "1px solid black"}} key={course.id}>
+							<div  key={course.id}>
 								<h2>{course.category}</h2>
 
 								{course.dishes.map(dish => (

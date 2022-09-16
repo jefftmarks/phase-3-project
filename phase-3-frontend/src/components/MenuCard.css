@@ -10,7 +10,7 @@
     color: rgb(67, 52, 52);
     position: relative;
     margin: 5px;
-    padding: 15px;
+    text-align: center;
     
     
 
@@ -19,10 +19,10 @@
 
 
 .menu-card-image {
-    display: flex;
-        margin: 10px;
+     margin: 10px;
         border-radius: 10%;
         position: relative;
+        display: flex;
         
 }
 
@@ -62,4 +62,9 @@
         margin: 5px;
         text-align: center;
 
+}
+
+.your-menus {
+    display: inline-flex;
+    position: relative;
 }
