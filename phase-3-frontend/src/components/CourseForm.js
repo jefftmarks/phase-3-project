@@ -38,7 +38,7 @@ function CourseForm({ handleUpdateCourses, courseNum, courseList, onDeleteCourse
 				}
 			})
 		}
-		setDishList(updatedDishes);
+		setDishes(updatedDishes);
 	}
 	
 
@@ -53,7 +53,6 @@ function CourseForm({ handleUpdateCourses, courseNum, courseList, onDeleteCourse
 		})
 		setDishes(updatedDishes);
 	}
-
 	
 	function onAddDishClick(event){
 		event.preventDefault();
@@ -73,18 +72,26 @@ function CourseForm({ handleUpdateCourses, courseNum, courseList, onDeleteCourse
 				</button>
 			): null}</h2>
 			<div className="course-form-div">
-			<input className="course-input"
-				required
-				id="create-course-category"
-				placeholder="Add a Category"
-				type="text"
-				name="category"
-				value={courseData.category}
-				onChange={handleChange}
-			/>
-			<button className="add-dish-button" onClick={onAddDishClick}>Add Dish</button>
+				<select className="course-input"
+					required
+					id="create-course-category"
+					// placeholder="Add a Category"
+					name="category"
+					value={courseData.category}
+					onChange={handleChange}
+				>
+					<option disabled value="">Please Choose</option>
+					<option value="Appetizer">"Appetizer"</option>
+					<option value="Starter">"Starter"</option>
+					<option value="Side">"Side"</option>
+					<option value="Maine">"Main"</option>
+					<option value="Entree">"Entree"</option>
+					<option value="Dessert">"Dessert"</option>
+				</select>
 
-			<br />
+				<button className="add-dish-button" onClick={onAddDishClick}>Add Dish</button>
+
+				<br />
 			</div>
 
 

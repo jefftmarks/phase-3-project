@@ -175,7 +175,8 @@ function MenuForm({ activeUser, setActiveUser }) {
 
 
 									{courseList.map(course => (
-										<CourseForm className="course-child"
+										<CourseForm
+											className="course-child"
 											key={course.id}
 											courseNum={course.courseNum}
 											handleUpdateCourses={handleUpdateCourses}
