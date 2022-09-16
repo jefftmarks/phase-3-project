@@ -6,6 +6,7 @@ User.destroy_all
 Menu.destroy_all
 Course.destroy_all
 Like.destroy_all
+Dish.destroy_all
 
 
 food_pics = [
@@ -31,7 +32,7 @@ events = ["Halloween", "Christmas", "Birthday", "Wallet Friendly", "Bougie", "Th
 event_types = ["Breakfast", "Charcuterie Board", "Lunch", "Dinner", "Wine Tasting", "Hot Dog Eating Contest", "Buffet", "Potluck", "Brunch", "Snack", "Feast", "BBQ", "Party", "Picnic"]
 
 
-10.times do |i|
+20.times do |i|
 
 	user = User.create(
 		first_name: Faker::Name.first_name,
@@ -52,20 +53,19 @@ event_types = ["Breakfast", "Charcuterie Board", "Lunch", "Dinner", "Wine Tastin
 			dishes = []
 
 			rand(1..3).times do |i|
-				dishes << Dish.create(
+				dish = Dish.create(
 					name: Faker::Food.dish,
 					description: Faker::Lorem.sentence(word_count: 5),
 					ingredients: "#{Faker::Food.ingredient}, #{Faker::Food.measurement}"
 				)
+				dishes << dish
 			end
 
 			course = Course.create(
 				category: ["Appetizer", "Starter", "Entree", "Main", "Side", "Dessert"].sample,
 				dishes: dishes
 			)
-
 			courses << course
-
 		end
 
 		Menu.create(
@@ -80,6 +80,7 @@ event_types = ["Breakfast", "Charcuterie Board", "Lunch", "Dinner", "Wine Tastin
 	end
 
 end
+
 
 20.times do |i|
 	menu_maker = User.all.sample
