@@ -99,7 +99,7 @@ class ApplicationController < Sinatra::Base
 	end
 
 	get "/recent_menus" do
-		menus = Menu.all.order(created_at: :desc).limit(20).to_json(include: :user)
+		menus = Menu.all.order(date: :desc).limit(50).to_json(include: :user)
 	end
 
 	get "/likes" do

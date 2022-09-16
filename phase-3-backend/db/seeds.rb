@@ -7,17 +7,6 @@ Menu.destroy_all
 Course.destroy_all
 Like.destroy_all
 
-10.times do |i|
-	User.create(
-		first_name: Faker::Name.first_name,
-		last_name: Faker::Name.last_name,
-		username: Faker::Internet.username,
-		password: Faker::Internet.password(min_length: 8, max_length: 20),
-		image_url: Faker::Avatar.image,
-		email: Faker::Internet.safe_email,
-		is_active: false
-	)
-end
 
 food_pics = [
 	"https://static.onecms.io/wp-content/uploads/sites/44/2019/08/26231113/5783153.jpg",
@@ -37,39 +26,71 @@ food_pics = [
 	"https://media.istockphoto.com/photos/buffet-table-with-sweets-and-drinks-cooked-and-decorated-in-honor-of-picture-id1056773758?k=20&m=1056773758&s=612x612&w=0&h=IiMJNziirsuYZ1AWxwBilWTBitcImF9dhm49MmlgAeY="
 ]
 
+events = ["Halloween", "Christmas", "Summer", "Winter", "Fall", "Spring", "Birthday", "Wallet Friendly", "Bougie", "Thanksgiving", "Family", "#{Faker::Movie.title}-Themed", "Holiday", "Easter", "Corporate", "Super Special", "Quick and Easy", "#{Faker::Commerce.vendor}-Sponsored", "Valentine's Day", "#{Faker::Address.state}"]
+
+event_types = ["Breakfast", "Charcuterie Board", "Lunch", "Dinner", "Wine Tasting", "Hot Dog Eating Contest", "Buffet", "Potluck", "Brunch", "Snack", "Feast", "BBQ", "Party", "Picnic"]
+
+
+10.times do |i|
+
+	user = User.create(
+		first_name: Faker::Name.first_name,
+		last_name: Faker::Name.last_name,
+		username: Faker::Internet.username,
+		password: Faker::Internet.password(min_length: 8, max_length: 20),
+		image_url: Faker::Avatar.image,
+		email: Faker::Internet.safe_email,
+		is_active: false
+	)
+
+	rand(6..10).times do |i|
+
+		courses = []
+
+		rand(1..3).times do |i|
+
+			dishes = []
+
+			rand(1..3).times do |i|
+				dishes << Dish.create(
+					name: Faker::Food.dish,
+					description: Faker::Lorem.sentence(word_count: 5),
+					ingredients: "#{Faker::Food.ingredient}, #{Faker::Food.measurement}"
+				)
+			end
+
+			course = Course.create(
+				category: ["Appetizer", "Starter", "Entree", "Main", "Side", "Dessert"].sample,
+				dishes: dishes
+			)
+
+			courses << course
+
+		end
+
+		Menu.create(
+			name: events.sample + " " + event_types.sample,
+			image_url: food_pics.sample,
+			description: Faker::Lorem.sentence(word_count: 10),
+			date: Faker::Date.backward(days: 365),
+			user: user,
+			courses: courses
+		)
+
+	end
+
+end
+
 20.times do |i|
+	menu_maker = User.all.sample
 
-	dishes = []
+	menu = menu_maker.menus.sample
 
-	rand(1..10).times do |i|
-		dishes << Dish.create(
-			name: Faker::Food.dish,
-			description: Faker::Lorem.sentence(word_count: 5),
-			ingredients: "#{Faker::Food.ingredient}, #{Faker::Food.measurement}"
-		)
-	end
+	user = User.all.filter {|user| user.id != menu_maker.id }.sample
 
-	courses = []
-
-	rand(1..5).times do |i|
-		courses << Course.create(
-			category: ["Appetizer", "Starter", "Entree", "Main", "Side", "Dessert"].sample,
-			dishes: dishes.sample(rand(1..2))
-		)
-	end
-
-
-	events = ["Halloween", "Christmas", "Birthday", "Thanksgiving", "Family", "#{Faker::Movie.title}-Themed", "Easter", "Corporate", "My Super Special", "#{Faker::Commerce.vendor}-Inspired", "Valentine's Day", "#{Faker::Address.state}"]
-
-	event_types = ["Breakfast", "Lunch", "Dinner", "Brunch", "Snack", "Feast", "BBQ", "Party", "Picnic"]
-
-	Menu.create(
-		name: events.sample + " " + event_types.sample,
-		image_url: food_pics.sample,
-		description: Faker::Lorem.sentence(word_count: 10),
-		date: Faker::Date.backward(days: 365),
-		user_id: User.all.sample.id,
-		courses: courses.sample(rand(1..2))
+	Like.create(
+		liked_menu: menu,
+		liker: user
 	)
 end
 
