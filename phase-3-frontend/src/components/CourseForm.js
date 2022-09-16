@@ -72,7 +72,7 @@ function CourseForm({ handleUpdateCourses, courseNum, courseList, onDeleteCourse
 					<RiDeleteBin5Line size="18" onClick={() => onDeleteCourse(courseNum)} />
 				</button>
 			): null}</h2>
-			<div>
+			<div className="course-form-div">
 			<input className="course-input"
 				required
 				id="create-course-category"
@@ -82,11 +82,11 @@ function CourseForm({ handleUpdateCourses, courseNum, courseList, onDeleteCourse
 				value={courseData.category}
 				onChange={handleChange}
 			/>
+			<button className="add-dish-button" onClick={onAddDishClick}>Add Dish</button>
 
 			<br />
 			</div>
 
-			<button style={{marginTop: "15px"}} onClick={onAddDishClick}>Add Dish</button>
 
 			{dishList.map(dish => (
 				<DishForm
