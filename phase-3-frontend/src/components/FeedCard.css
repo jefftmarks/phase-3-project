@@ -40,5 +40,10 @@ p {
 }
 
 .description {
+	margin-top: 15px;
+}
+
+.plated {
 	margin-top: 20px;
+	font-weight: bold;
 }

@@ -4,19 +4,22 @@ import './FeedCard.css'
 
 
 function FeedCard({ menu }) {
-    const {image_url, name, date, id, user, description} = menu
+    const {image_url, name, id, user, date, description, created_at} = menu
 
-		const formattedDate = new Date(date);
+		const publishedDate = new Date(created_at);
+
+		const platedDate = new Date(date);
 
 
     return (
         <div className="menu-container">
 					<div className="menu-card">
 						<h1>{user.first_name}'s {name}</h1>
-						<p>Published {formattedDate.toDateString()}</p>
+						<p>Published {publishedDate.toDateString()}</p>
             <Link to={`/menu/${id}`}>
 							<img className="menu-image" src={image_url} alt="menu"/>
 						</Link>
+						<p className="plated">Plated by {user.first_name} on {platedDate.toDateString()}</p>
 						<p className="description">{description}</p>
 						<div className="divider"></div>
 					</div>

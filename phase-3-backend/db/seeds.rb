@@ -27,7 +27,7 @@ food_pics = [
 	"https://media.istockphoto.com/photos/buffet-table-with-sweets-and-drinks-cooked-and-decorated-in-honor-of-picture-id1056773758?k=20&m=1056773758&s=612x612&w=0&h=IiMJNziirsuYZ1AWxwBilWTBitcImF9dhm49MmlgAeY="
 ]
 
-events = ["Halloween", "Christmas", "Summer", "Winter", "Fall", "Spring", "Birthday", "Wallet Friendly", "Bougie", "Thanksgiving", "Family", "#{Faker::Movie.title}-Themed", "Holiday", "Easter", "Corporate", "Super Special", "Quick and Easy", "#{Faker::Commerce.vendor}-Sponsored", "Valentine's Day", "#{Faker::Address.state}"]
+events = ["Halloween", "Christmas", "Summer", "Winter", "Fall", "Spring", "Birthday", "Wallet-Friendly", "Bougie", "Thanksgiving", "Family", "#{Faker::Movie.title}-Themed", "Holiday", "Easter", "Corporate", "Super Special", "Quick and Easy", "#{Faker::Commerce.vendor}-Sponsored", "Valentine's Day", "#{Faker::Address.state}"]
 
 event_types = ["Breakfast", "Charcuterie Board", "Lunch", "Dinner", "Wine Tasting", "Hot Dog Eating Contest", "Buffet", "Potluck", "Brunch", "Snack", "Feast", "BBQ", "Party", "Picnic"]
 
@@ -72,9 +72,10 @@ event_types = ["Breakfast", "Charcuterie Board", "Lunch", "Dinner", "Wine Tastin
 			name: events.sample + " " + event_types.sample,
 			image_url: food_pics.sample,
 			description: Faker::Lorem.sentence(word_count: 10),
-			date: Faker::Date.backward(days: 365),
+			date: Faker::Date.backward(days: 30),
 			user: user,
-			courses: courses
+			courses: courses,
+			created_at: Faker::Date.backward(days: 30).to_time.to_datetime
 		)
 
 	end

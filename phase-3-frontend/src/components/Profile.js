@@ -12,8 +12,6 @@ function Profile ({ activeUser }) {
 	
 	const params = useParams();
 
-	console.log(profile)
-
 	useEffect(() => {
 		fetch(`http://localhost:9292/find_by_username/${params.username}`)
 			.then(res => res.json())
@@ -48,8 +46,8 @@ function Profile ({ activeUser }) {
 
 					<div className="your-menus-div">
 						{menus.map(menu => (
-							<div className="your-menus">
-							<MenuCard className="your-menu-images" key={menu.id} menu={menu} tag={"menu"}/>
+							<div key={menu.id} className="your-menus">
+							<MenuCard className="your-menu-images" menu={menu} tag={"menu"}/>
 							</div>
 						))}
 					</div>
@@ -59,8 +57,8 @@ function Profile ({ activeUser }) {
 
 					<div>
 						 {likes.map(like => (
-						<div className="liked-menus">
-							<MenuCard className="liked-menu-images" key={like.id} menu={like} tag={"like"}/>
+						<div key={like.id} className="liked-menus">
+							<MenuCard className="liked-menu-images" menu={like} tag={"like"}/>
 						</div>
 					))}
 						
