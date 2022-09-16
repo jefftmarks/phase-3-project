@@ -46,7 +46,7 @@ function Profile ({ activeUser }) {
 
 					<h2 className="headings-for-profile-images">{isActiveUser ? "Your Menus" : `${profile.first_name}'s Menus`}</h2>
 
-					<div>
+					<div className="your-menus-div">
 						{menus.map(menu => (
 							<div className="your-menus">
 							<MenuCard className="your-menu-images" key={menu.id} menu={menu} tag={"menu"}/>
