@@ -78,7 +78,7 @@ body {
     font-family: 'Alex Brush', cursive;
     border: solid 1px rgba(0, 0, 0, 0.20);
 				border-radius: 10px;
-        box-sizing: border-box;
+       
         position: relative;
         width: 80%;
         padding: 30px;

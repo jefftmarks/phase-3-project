@@ -172,7 +172,7 @@ function MenuForm({ activeUser, setActiveUser }) {
 									<button className="menu-form-button" onClick={onAddCourseClick}>Add Course</button>
 
 									{courseList.map(course => (
-										<CourseForm
+										<CourseForm className="course-child"
 											key={course.id}
 											courseNum={course.courseNum}
 											handleUpdateCourses={handleUpdateCourses}
