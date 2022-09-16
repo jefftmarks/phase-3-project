@@ -98,8 +98,26 @@ class ApplicationController < Sinatra::Base
 		menu.to_json
 	end
 
+	get "/recent_menus/:count" do
+		menus = Menu.all.order(created_at: :desc)
+
+		start = params[:count].to_i
+		finish = params[:count].to_i + 19
+
+		feed = menus[start..finish]
+		
+		feed.to_json(include: :user)
+	end
+
 	get "/recent_menus" do
-		menus = Menu.all.order(created_at: :desc).limit(50).to_json(include: :user)
+		menus = Menu.all.order(created_at: :desc)
+
+		# start = params[:count].to_i
+		# finish = params[:count].to_i + 19
+
+		# feed = menus[start..finish]
+		
+		menus.to_json(include: :user)
 	end
 
 	get "/likes" do

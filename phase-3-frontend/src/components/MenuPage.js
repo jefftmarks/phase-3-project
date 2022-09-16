@@ -89,17 +89,22 @@ function MenuPage ({ activeUser }) {
 				<div>
 
 					<div className="menu-page-container-div">
-						{like ? (
-							<button className="like-button" style={{padding: "3px"}} onClick={handleDislike}>
-								Unlike Menu <BsSuitHeartFill style={{marginBottom: "-2px", color:"red" }}/>
-								</button>
-						) : (
-							<button style={{padding: "3px"}} onClick={handleLike}>
-								Like Menu <BsSuitHeart style={{marginBottom: "-2px"}}/>
-								</button>
+						{isActiveUser ? null : (
+							<>
+							{like ? (
+								<button className="like-button" onClick={handleDislike}>
+									Unlike Menu <BsSuitHeartFill style={{marginBottom: "-2px", color:"red" }}/>
+									</button>
+							) : (
+								<button className="like-button" onClick={handleLike}>
+									Like Menu <BsSuitHeart style={{marginBottom: "-2px"}}/>
+									</button>
+							)}
+							
+							<br />
+							</>
 						)}
-						
-						<br />
+
 						<img className="menu-page-img" src={menu.image_url} alt="menu" style={{height: "200px", width: "auto"}}/>
 						<h1 className="menu-page-title">{menu.name}</h1>
 
@@ -128,13 +133,14 @@ function MenuPage ({ activeUser }) {
 							</div>
 						))}
 						<p className="published">Published {publishedDate.toDateString()}</p>
+
+						{isActiveUser ? (
+							<button onClick={handleDeleteMenu} className="delete-button">Delete Menu</button>
+						) : null}
+
 					</div>
 
-					{isActiveUser ? (
-						<>
-							<button onClick={handleDeleteMenu}>Delete Menu</button>
-						</>
-					) : null}
+					
 
 				</div>	
 
