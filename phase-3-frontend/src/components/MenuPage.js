@@ -110,29 +110,29 @@ function MenuPage ({ activeUser }) {
 
 						{!isActiveUser ? (
 
-							<h3>
+							<h3 className="dish-name">
 								by <Link to={`/user/${profile.username}`}>{profile.first_name} {profile.last_name}</Link>
 							</h3>
 
 						) : null}
 						
-						<p>Plated on {platedDate.toDateString()}</p>
-						<p><em>{menu.description}</em></p>
+						<p className="small-text-menu">Plated on {platedDate.toDateString()}</p>
+						<p className="small-text-menu"><em>{menu.description}</em></p>
 
 						{menu.courses.map(course => (
-							<div  key={course.id}>
-								<h2>{course.category}</h2>
+							<div key={course.id}>
+								<h2 className="menu-page-category">{course.category}</h2>
 
 								{course.dishes.map(dish => (
 									<div key={dish.id}>
-										<h3>{dish.name}</h3>
-										<p>{dish.description}</p>
-										<p>Ingredients: {dish.ingredients}</p>
+										<h3 className="dish-name">{dish.name}</h3>
+										<p className="small-text-menu">{dish.description}</p>
+										<p className="small-text-menu">Ingredients: {dish.ingredients}</p>
 									</div>
 								))}
 							</div>
 						))}
-						<p className="published">Published {publishedDate.toDateString()}</p>
+						<p className="small-date-menu">Published {publishedDate.toDateString()}</p>
 
 						{isActiveUser ? (
 							<button onClick={handleDeleteMenu} className="delete-button">Delete Menu</button>
