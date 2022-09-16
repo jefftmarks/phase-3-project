@@ -38,7 +38,7 @@ function CourseForm({ handleUpdateCourses, courseNum, courseList, onDeleteCourse
 				}
 			})
 		}
-		setDishList(updatedDishes);
+		setDishes(updatedDishes);
 	}
 	
 

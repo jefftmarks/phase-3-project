@@ -14,13 +14,13 @@ function FeedCard({ menu }) {
     return (
         <div className="menu-container">
 					<div className="menu-card">
-						<h1>{user.first_name}'s {name}</h1>
+						<h1 className="feed-card-title">{user.first_name}'s {name}</h1>
 						<p>Published {publishedDate.toDateString()}</p>
             <Link to={`/menu/${id}`}>
 							<img className="menu-image" src={image_url} alt="menu"/>
 						</Link>
 						<p className="plated">Plated by {user.first_name} on {platedDate.toDateString()}</p>
-						<p className="description">{description}</p>
+						<p className="feed-card-description">{description}</p>
 						<div className="divider"></div>
 					</div>
         </div>
