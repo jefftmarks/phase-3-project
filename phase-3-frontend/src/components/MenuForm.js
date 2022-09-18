@@ -80,15 +80,10 @@ function MenuForm({ activeUser, setActiveUser }) {
 			.then(res => res.json())
 			.then((menu) => {
 				console.log(menu)
-				// const updatedUser = {
-				// 	...activeUser,
-				// 	menus: [...activeUser.menus, menu]
-				// }
-				// setActiveUser(updatedUser)
+				resetForms();
+				navigate(`/menu/${menu.id}`);
 			})
 			.catch(e => console.error(e))
-		resetForms();
-		navigate(`/user/${activeUser.username}`);
 	}
 
 

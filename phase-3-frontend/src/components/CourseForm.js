@@ -15,7 +15,6 @@ function CourseForm({ handleUpdateCourses, courseNum, courseList, onDeleteCourse
 		setCourseData(courseData => ({...courseData, [name]: value, courseNum: parseInt(courseNum)}))
 	}
 
-
 	useEffect(() => {
 		const updatedCourse = {...courseData, dishes: dishes}
 		handleUpdateCourses(updatedCourse)
@@ -25,12 +24,12 @@ function CourseForm({ handleUpdateCourses, courseNum, courseList, onDeleteCourse
 	function handleUpdateDishes(dishData) {
 		let updatedDishes;
 
-		const dishExists = dishList.find(dish => dish.dishNum === dishData.dishNum);
+		const dishExists = dishes.find(dish => dish.dishNum === dishData.dishNum);
 
 		if (!dishExists) {
-			updatedDishes = [...dishList, dishData];
+			updatedDishes = [...dishes, dishData];
 		} else {
-			updatedDishes = dishList.map(dish => {
+			updatedDishes = dishes.map(dish => {
 				if (dish.dishNum === dishData.dishNum) {
 					return dishData;
 				} else {
@@ -38,9 +37,11 @@ function CourseForm({ handleUpdateCourses, courseNum, courseList, onDeleteCourse
 				}
 			})
 		}
-		setDishes(updatedDishes);
+		if (dishData.dishNum !== "") {
+			setDishes(updatedDishes);
+		}
 	}
-	
+
 
 	function onDeleteDish(dishNum){
 		const updatedDishList = dishList.filter(dish => {
